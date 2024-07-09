@@ -1,9 +1,9 @@
  import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../all_feat.dart';
-import '../domain/user_model.dart';
-import '../infrastructure/user_repository.dart';
+import '../feat_guiding.dart';
+ import '../../all_feat.dart';
+
 
 part 'user_add_notifier.freezed.dart';
 
