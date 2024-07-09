@@ -1,0 +1,80 @@
+name: guide_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  uuid: ^3.0.7
+  auto_route: ^7.8.3
+  flutter_hooks: ^0.20.1
+  hooks_riverpod: ^2.3.2
+  dartz: ^0.10.1
+  freezed_annotation: ^2.1.0
+  dio: ^5.1.0
+  pretty_dio_logger: ^1.3.1
+  json_annotation: ^4.8.1
+  flutter_flavorizr: ^2.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  auto_route_generator: ^7.3.1
+  freezed: ^2.1.0+1
+  json_serializable: ^6.7.1
+  build_runner: any
+
+flutter:
+  uses-material-design: true
+
+  #assets:
+  #  - assets/fonts/
+  # - assets/images/
+
+  fonts:
+    - family: digital
+      fonts:
+        - asset: assets/fonts/digital-7.ttf
+    - family: digital-bold
+      fonts:
+        - asset: assets/fonts/digital-normal.otf
+    - family: Pyidaungsu
+      fonts:
+        - asset: assets/fonts/Pyidaungsu_Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Pyidaungsu_Regular.ttf
+          weight: 400
+
+
+
+# flavorizr
+flavorizr:
+  ide : vscode
+  flavors:
+    prod:
+      app:
+        name: "Guiding App"
+      android:
+        applicationId: "com.systematic.guiding"
+        icon: "assets/images/logo.jpeg"
+      ios:
+        bundleId: "com.systematic.guiding"
+        icon: "assets/images/logo.jpeg"
+
+    uat:
+      app:
+        name: "Guiding App (UAT)"
+
+      android:
+        applicationId: "com.systematic.guiding.dev"
+        icon: "assets/images/logo.jpeg"
+      ios:
+        bundleId: "com.systematic.guiding.dev"
+        icon: "assets/images/logo.jpeg"
+        
