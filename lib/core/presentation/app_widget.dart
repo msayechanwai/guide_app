@@ -1,10 +1,12 @@
-/* import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 import 'package:dartz/dartz.dart';
 import 'package:guide_app/core/shared/userdio_provider.dart';
 import 'package:guide_app/flavors.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+import 'app_router.dart';
 
 final initializationProvider = FutureProvider<Unit>(
   (ref) async {
@@ -42,4 +44,3 @@ class AppWidget extends ConsumerWidget {
     );
   }
 }
- */
