@@ -63,8 +63,8 @@ class UserRemoteService {
     }
   }
 
-  //Add
-   Future<NetworkResult<UserDto>> addUser(UserDto user) async {
+  // add
+  Future<NetworkResult<UserDto>> addUser(UserDto user) async {
     print("add user in remote => $user");
     try {
       final response = await _dio.post('user', data: user.toJson());
@@ -93,9 +93,9 @@ class UserRemoteService {
         rethrow;
       }
     }
-  } 
+  }
 
-  //Update
+  // update
   Future<NetworkResult<UserDto>> updateUser(UserDto user) async {
     print("update user in remote => $user");
     try {
@@ -125,5 +125,5 @@ class UserRemoteService {
         rethrow;
       }
     }
-  } 
+  }
 }

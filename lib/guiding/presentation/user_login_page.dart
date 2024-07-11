@@ -14,17 +14,56 @@ class UserLoginPage extends ConsumerStatefulWidget {
 }
 
 class _UserLoginPageState extends ConsumerState<UserLoginPage> {
-
   final userNameController = TextEditingController();
-  final addressController = TextEditingController();
   final phnoController = TextEditingController();
-  
+
+  Future<void> _login() async {
+    final username = userNameController.text.trim();
+    final phno = phnoController.text.trim();
+
+    if (username.isEmpty || phno.isEmpty) {
+      _showAlertDialog('Error', 'Please fill in all fields');
+      return;
+    }
+
+    // Login logic
+    final result = await ref.read(userRepositoryProvider).loginUser(username, phno);
+
+    result.fold(
+      (error) {
+        _showAlertDialog('Error', '$error.message');
+      },
+      (user) {
+        if (user != null) {
+          context.router.push(const UserHomeRoute());
+        } else {
+          _showAlertDialog('Error', 'Invalid username or phone number');
+        }
+      },
+    );
+  }
+
+  void _showAlertDialog(String title, String content) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(title),
+        content: Text(content),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     ref.listen(
       userAddNotifierProvider,
       (previous, state) {
-        //print("userAddNotifierProvider => $state");
         state.maybeWhen(
             orElse: () {},
             success: (data) {
@@ -32,7 +71,8 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
             });
       },
     );
-     return MaterialApp(
+
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.lightBlue[50],
@@ -49,7 +89,7 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
                 const Text(
                   "User Login",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -58,7 +98,7 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
                   "Enter Your Information",
                   style: TextStyle(fontSize: 15, color: Colors.grey[700]),
                 ),
-                const SizedBox(height: 40), // Adjusted this value to control spacing
+                const SizedBox(height: 40),
                 TextFormField(
                   controller: userNameController,
                   decoration: InputDecoration(
@@ -87,31 +127,17 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
                   ),
                   keyboardType: TextInputType.number,
                 ),
-                const SizedBox(height: 40), // Adjusted this value to control spacing
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      /*  UserModel user = UserModel(
-                        username: userNameController.text,
-                        address: addressController.text,
-                        phno: phnoController.text,
-                        createdat: DateTime.now(),
-                        id: '',
-                      ); 
-                      print(user);
-                      ref
-                          .read(userAddNotifierProvider.notifier)
-                          .addUser(user); */
-                    },
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      shape: const StadiumBorder(),
-                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-                      backgroundColor: Colors.lightBlue[200],
-                    ),
+                const SizedBox(height: 40),
+                ElevatedButton(
+                  onPressed: _login,
+                  child: const Text(
+                    "Login",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    shape: const StadiumBorder(),
+                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                    backgroundColor: Colors.lightBlue[200],
                   ),
                 ),
                 Row(

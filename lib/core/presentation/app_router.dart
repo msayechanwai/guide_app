@@ -14,5 +14,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ChooseLoginRoute.page, path: "/choose-login"),
         AutoRoute(page: UserRegisterRoute.page, path: "/user-register"),
         AutoRoute(page: UserLoginRoute.page, path: "/user-login"),
+        AutoRoute(page: UserHomeRoute.page, path: "/user-home"),
       ];
 }
