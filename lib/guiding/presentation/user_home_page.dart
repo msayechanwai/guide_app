@@ -1,4 +1,3 @@
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +7,9 @@ class UserHomePage extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
       appBar: AppBar(
         title: const Text('Guiding App'),
       ),
@@ -22,120 +23,124 @@ class UserHomePage extends StatelessWidget {
               height: 200,
               fit: BoxFit.cover),
           ),
+          // Padding between image and cards
+          const SizedBox(height: 8.0),
           // Second row with 6 cards in 2 rows and 3 columns
           Expanded(
-            child: GridView.count(
-              padding: const EdgeInsets.all(9.0),
-              crossAxisCount: 3,
-              childAspectRatio: 3 / 3,
-              mainAxisSpacing: 4.0,
-              crossAxisSpacing: 4.0,
-              children: const [
-                Card(
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.image, size: 50),
-                        Text('IELTS'),
-                      ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: GridView.count(
+                crossAxisCount: 3,
+                childAspectRatio: 3 / 3,
+                mainAxisSpacing: 4.0,
+                crossAxisSpacing: 4.0,
+                children: [
+                  Card(
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/images/welcome.jpg', width: 50, height: 50),
+                          const Text('IELTS'),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Card(
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.image, size: 50),
-                        Text('TOFEL'),
-                      ],
+                  Card(
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/images/welcome.jpg', width: 50, height: 50),
+                          const Text('TOFEL'),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Card(
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.image, size: 50),
-                        Text('DULINGO'),
-                      ],
+                  Card(
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/images/welcome.jpg', width: 50, height: 50),
+                          const Text('DULINGO'),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Card(
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.image, size: 50),
-                        Text('Japan'),
-                      ],
+                  Card(
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/images/welcome.jpg', width: 50, height: 50),
+                          const Text('Japan'),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Card(
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.image, size: 50),
-                        Text('Korea'),
-                      ],
+                  Card(
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/images/welcome.jpg', width: 50, height: 50),
+                          const Text('Korea'),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Card(
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.image, size: 50),
-                        Text('Math'),
-                      ],
+                  Card(
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/images/welcome.jpg', width: 50, height: 50),
+                          const Text('Math'),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Card(
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.image, size: 50),
-                        Text('7'),
-                      ],
+                  Card(
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/images/welcome.jpg', width: 50, height: 50),
+                          const Text('7'),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Card(
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.image, size: 50),
-                        Text('8'),
-                      ],
+                  Card(
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/images/welcome.jpg', width: 50, height: 50),
+                          const Text('8'),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Card(
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.image, size: 50),
-                        Text('9'),
-                      ],
+                  Card(
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/images/welcome.jpg', width: 50, height: 50),
+                          const Text('9'),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
       ),
-       bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -164,6 +169,7 @@ class UserHomePage extends StatelessWidget {
           }
         },
       ), 
+    ),
     );
   }
 }

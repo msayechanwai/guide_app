@@ -11,15 +11,17 @@ class UserModel with _$UserModel {
     required String username,
     required String address,
     required String phno,
+    required String password,
     required DateTime createdat,
     required String id,
   }) = _UserModel;
-  UserDto toDto() => UserDto(
+   UserDto toDto() => UserDto(
         username : username,
         address : address,
         phno : phno,
+        password : password,
         createdat : createdat,
         id : id,
-    ); 
+    );  
   
 }

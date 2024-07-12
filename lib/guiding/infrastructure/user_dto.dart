@@ -15,6 +15,7 @@ class UserDto with _$UserDto {
     required String username,
     @JsonKey(name: "address", fromJson: stringFromJson) required String address,
     @JsonKey(name: "phno", fromJson: stringFromJson) required String phno,
+    @JsonKey(name: "password", fromJson: stringFromJson) required String password,
     @JsonKey(name: "createdat", fromJson: dateTimeFromJson) required DateTime createdat,
     @JsonKey(name: "id", fromJson: stringFromJson) required String id,
   }) =_UserDto;
@@ -27,6 +28,7 @@ class UserDto with _$UserDto {
         username : username,
         address : address,
         phno : phno,
+        password: password,
         createdat : createdat,
         id : id,
       );
@@ -36,6 +38,7 @@ class UserDto with _$UserDto {
         username : username,
         address : address,
         phno : phno,
+        password: password,
         createdat : createdat,
         id : id,
       );

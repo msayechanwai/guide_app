@@ -74,16 +74,16 @@ class UserRepository {
   }
 
   //login
-  Future<Either<ResponseInfoError, UserModel?>> loginUser(String username, String phno) async {
+  Future<Either<ResponseInfoError, UserModel?>> loginUser(String username, String password) async {
     try {
       final hodStaffs = await _remoteService.getUserList();
       return hodStaffs.when(
-        noConnection: () => left(ResponseInfoError(0, 'No internet connection')),
+        noConnection: () => left(const ResponseInfoError(0, 'No internet connection')),
         result: (entity) {
           final users = entity.map((e) => e.toDomain()).toList();
           UserModel? user;
           for (var u in users) {
-            if (u.username == username && u.phno == phno) {
+            if (u.username == username && u.password == password) {
               user = u;
               break;
             }

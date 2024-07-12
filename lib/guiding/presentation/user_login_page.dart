@@ -15,19 +15,19 @@ class UserLoginPage extends ConsumerStatefulWidget {
 
 class _UserLoginPageState extends ConsumerState<UserLoginPage> {
   final userNameController = TextEditingController();
-  final phnoController = TextEditingController();
+  final pswdController = TextEditingController();
 
   Future<void> _login() async {
     final username = userNameController.text.trim();
-    final phno = phnoController.text.trim();
+    final password = pswdController.text.trim();
 
-    if (username.isEmpty || phno.isEmpty) {
+    if (username.isEmpty || password.isEmpty) {
       _showAlertDialog('Error', 'Please fill in all fields');
       return;
     }
 
     // Login logic
-    final result = await ref.read(userRepositoryProvider).loginUser(username, phno);
+    final result = await ref.read(userRepositoryProvider).loginUser(username, password);
 
     result.fold(
       (error) {
@@ -37,7 +37,7 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
         if (user != null) {
           context.router.push(const UserHomeRoute());
         } else {
-          _showAlertDialog('Error', 'Invalid username or phone number');
+          _showAlertDialog('Error', 'Invalid username or password');
         }
       },
     );
@@ -114,16 +114,16 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
-                  controller: phnoController,
+                  controller: pswdController,
                   decoration: InputDecoration(
-                    hintText: "Your Phone Number",
+                    hintText: "Your Password",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(18),
                       borderSide: BorderSide.none,
                     ),
                     fillColor: Colors.lightBlue.withOpacity(0.1),
                     filled: true,
-                    prefixIcon: const Icon(Icons.phone),
+                    prefixIcon: const Icon(Icons.password),
                   ),
                   keyboardType: TextInputType.number,
                 ),

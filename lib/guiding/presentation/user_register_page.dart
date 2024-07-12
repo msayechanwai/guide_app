@@ -14,11 +14,20 @@ class UserRegisterPage extends ConsumerStatefulWidget {
 }
 
 class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
-
   final userNameController = TextEditingController();
   final addressController = TextEditingController();
   final phnoController = TextEditingController();
-  
+  final pswdController = TextEditingController();
+  bool isButtonDisabled = false;
+  bool isSuccess = false;
+
+  void clearFormFields() {
+    userNameController.clear();
+    addressController.clear();
+    phnoController.clear();
+    pswdController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     ref.listen(
@@ -26,10 +35,15 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
       (previous, state) {
         print("userAddNotifierProvider => $state");
         state.maybeWhen(
-            orElse: () {},
-            success: (data) {
-              // context.router.back();
+          orElse: () {},
+          success: (data) {
+            setState(() {
+              isSuccess = true;
+              isButtonDisabled = false; // Re-enable the button if needed
             });
+            clearFormFields();
+          },
+        );
       },
     );
 
@@ -59,7 +73,7 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                   "Create your account",
                   style: TextStyle(fontSize: 20, color: Colors.grey[700]),
                 ),
-                const SizedBox(height: 40), // Adjusted this value to control spacing
+                const SizedBox(height: 40),
                 TextFormField(
                   controller: userNameController,
                   decoration: InputDecoration(
@@ -71,20 +85,6 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                     fillColor: Colors.lightBlue.withOpacity(0.1),
                     filled: true,
                     prefixIcon: const Icon(Icons.person),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                TextFormField(
-                  controller: addressController,
-                  decoration: InputDecoration(
-                    hintText: "Your Address",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(18),
-                      borderSide: BorderSide.none,
-                    ),
-                    fillColor: Colors.lightBlue.withOpacity(0.1),
-                    filled: true,
-                    prefixIcon: const Icon(Icons.home),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -102,31 +102,69 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                   ),
                   keyboardType: TextInputType.number,
                 ),
-                const SizedBox(height: 40), // Adjusted this value to control spacing
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: pswdController,
+                  decoration: InputDecoration(
+                    hintText: "Your Password",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(18),
+                      borderSide: BorderSide.none,
+                    ),
+                    fillColor: Colors.lightBlue.withOpacity(0.1),
+                    filled: true,
+                    prefixIcon: const Icon(Icons.password),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: addressController,
+                  decoration: InputDecoration(
+                    hintText: "Your Address",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(18),
+                      borderSide: BorderSide.none,
+                    ),
+                    fillColor: Colors.lightBlue.withOpacity(0.1),
+                    filled: true,
+                    prefixIcon: const Icon(Icons.home),
+                  ),
+                ),
+                const SizedBox(height: 40),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: isButtonDisabled ? null : () {
+                    setState(() {
+                      isButtonDisabled = true;
+                    });
                     UserModel user = UserModel(
                       username: userNameController.text,
                       address: addressController.text,
                       phno: phnoController.text,
+                      password: pswdController.text,
                       createdat: DateTime.now(),
                       id: '',
                     );
                     print(user);
-                    ref
-                        .read(userAddNotifierProvider.notifier)
-                        .addUser(user);
+                    ref.read(userAddNotifierProvider.notifier).addUser(user);
                   },
                   child: const Text(
                     "Register",
                     style: TextStyle(fontSize: 20),
                   ),
-                   style: ElevatedButton.styleFrom(
+                  style: ElevatedButton.styleFrom(
                     shape: const StadiumBorder(),
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     backgroundColor: Colors.lightBlue[200],
                   ),
                 ),
+                if (isSuccess) ...[
+                  const SizedBox(height: 20),
+                  const Text(
+                    "Registration Successful!",
+                    style: TextStyle(color: Colors.green, fontSize: 18),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

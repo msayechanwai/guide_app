@@ -26,6 +26,8 @@ mixin _$UserDto {
   String get address => throw _privateConstructorUsedError;
   @JsonKey(name: "phno", fromJson: stringFromJson)
   String get phno => throw _privateConstructorUsedError;
+  @JsonKey(name: "password", fromJson: stringFromJson)
+  String get password => throw _privateConstructorUsedError;
   @JsonKey(name: "createdat", fromJson: dateTimeFromJson)
   DateTime get createdat => throw _privateConstructorUsedError;
   @JsonKey(name: "id", fromJson: stringFromJson)
@@ -45,6 +47,7 @@ abstract class $UserDtoCopyWith<$Res> {
       {@JsonKey(name: "username", fromJson: stringFromJson) String username,
       @JsonKey(name: "address", fromJson: stringFromJson) String address,
       @JsonKey(name: "phno", fromJson: stringFromJson) String phno,
+      @JsonKey(name: "password", fromJson: stringFromJson) String password,
       @JsonKey(name: "createdat", fromJson: dateTimeFromJson)
       DateTime createdat,
       @JsonKey(name: "id", fromJson: stringFromJson) String id});
@@ -66,6 +69,7 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
     Object? username = null,
     Object? address = null,
     Object? phno = null,
+    Object? password = null,
     Object? createdat = null,
     Object? id = null,
   }) {
@@ -81,6 +85,10 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
       phno: null == phno
           ? _value.phno
           : phno // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
               as String,
       createdat: null == createdat
           ? _value.createdat
@@ -105,6 +113,7 @@ abstract class _$$UserDtoImplCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       {@JsonKey(name: "username", fromJson: stringFromJson) String username,
       @JsonKey(name: "address", fromJson: stringFromJson) String address,
       @JsonKey(name: "phno", fromJson: stringFromJson) String phno,
+      @JsonKey(name: "password", fromJson: stringFromJson) String password,
       @JsonKey(name: "createdat", fromJson: dateTimeFromJson)
       DateTime createdat,
       @JsonKey(name: "id", fromJson: stringFromJson) String id});
@@ -124,6 +133,7 @@ class __$$UserDtoImplCopyWithImpl<$Res>
     Object? username = null,
     Object? address = null,
     Object? phno = null,
+    Object? password = null,
     Object? createdat = null,
     Object? id = null,
   }) {
@@ -139,6 +149,10 @@ class __$$UserDtoImplCopyWithImpl<$Res>
       phno: null == phno
           ? _value.phno
           : phno // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
               as String,
       createdat: null == createdat
           ? _value.createdat
@@ -160,6 +174,8 @@ class _$UserDtoImpl extends _UserDto {
       required this.username,
       @JsonKey(name: "address", fromJson: stringFromJson) required this.address,
       @JsonKey(name: "phno", fromJson: stringFromJson) required this.phno,
+      @JsonKey(name: "password", fromJson: stringFromJson)
+      required this.password,
       @JsonKey(name: "createdat", fromJson: dateTimeFromJson)
       required this.createdat,
       @JsonKey(name: "id", fromJson: stringFromJson) required this.id})
@@ -178,6 +194,9 @@ class _$UserDtoImpl extends _UserDto {
   @JsonKey(name: "phno", fromJson: stringFromJson)
   final String phno;
   @override
+  @JsonKey(name: "password", fromJson: stringFromJson)
+  final String password;
+  @override
   @JsonKey(name: "createdat", fromJson: dateTimeFromJson)
   final DateTime createdat;
   @override
@@ -186,7 +205,7 @@ class _$UserDtoImpl extends _UserDto {
 
   @override
   String toString() {
-    return 'UserDto(username: $username, address: $address, phno: $phno, createdat: $createdat, id: $id)';
+    return 'UserDto(username: $username, address: $address, phno: $phno, password: $password, createdat: $createdat, id: $id)';
   }
 
   @override
@@ -198,6 +217,8 @@ class _$UserDtoImpl extends _UserDto {
                 other.username == username) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.phno, phno) || other.phno == phno) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
             (identical(other.createdat, createdat) ||
                 other.createdat == createdat) &&
             (identical(other.id, id) || other.id == id));
@@ -205,8 +226,8 @@ class _$UserDtoImpl extends _UserDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, username, address, phno, createdat, id);
+  int get hashCode => Object.hash(
+      runtimeType, username, address, phno, password, createdat, id);
 
   @JsonKey(ignore: true)
   @override
@@ -230,6 +251,8 @@ abstract class _UserDto extends UserDto {
       required final String address,
       @JsonKey(name: "phno", fromJson: stringFromJson)
       required final String phno,
+      @JsonKey(name: "password", fromJson: stringFromJson)
+      required final String password,
       @JsonKey(name: "createdat", fromJson: dateTimeFromJson)
       required final DateTime createdat,
       @JsonKey(name: "id", fromJson: stringFromJson)
@@ -247,6 +270,9 @@ abstract class _UserDto extends UserDto {
   @override
   @JsonKey(name: "phno", fromJson: stringFromJson)
   String get phno;
+  @override
+  @JsonKey(name: "password", fromJson: stringFromJson)
+  String get password;
   @override
   @JsonKey(name: "createdat", fromJson: dateTimeFromJson)
   DateTime get createdat;

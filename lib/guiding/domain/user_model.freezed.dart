@@ -19,6 +19,7 @@ mixin _$UserModel {
   String get username => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get phno => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
   DateTime get createdat => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
 
@@ -36,6 +37,7 @@ abstract class $UserModelCopyWith<$Res> {
       {String username,
       String address,
       String phno,
+      String password,
       DateTime createdat,
       String id});
 }
@@ -56,6 +58,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? username = null,
     Object? address = null,
     Object? phno = null,
+    Object? password = null,
     Object? createdat = null,
     Object? id = null,
   }) {
@@ -71,6 +74,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       phno: null == phno
           ? _value.phno
           : phno // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
               as String,
       createdat: null == createdat
           ? _value.createdat
@@ -96,6 +103,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
       {String username,
       String address,
       String phno,
+      String password,
       DateTime createdat,
       String id});
 }
@@ -114,6 +122,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? username = null,
     Object? address = null,
     Object? phno = null,
+    Object? password = null,
     Object? createdat = null,
     Object? id = null,
   }) {
@@ -129,6 +138,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
       phno: null == phno
           ? _value.phno
           : phno // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
               as String,
       createdat: null == createdat
           ? _value.createdat
@@ -149,6 +162,7 @@ class _$UserModelImpl extends _UserModel {
       {required this.username,
       required this.address,
       required this.phno,
+      required this.password,
       required this.createdat,
       required this.id})
       : super._();
@@ -160,13 +174,15 @@ class _$UserModelImpl extends _UserModel {
   @override
   final String phno;
   @override
+  final String password;
+  @override
   final DateTime createdat;
   @override
   final String id;
 
   @override
   String toString() {
-    return 'UserModel(username: $username, address: $address, phno: $phno, createdat: $createdat, id: $id)';
+    return 'UserModel(username: $username, address: $address, phno: $phno, password: $password, createdat: $createdat, id: $id)';
   }
 
   @override
@@ -178,14 +194,16 @@ class _$UserModelImpl extends _UserModel {
                 other.username == username) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.phno, phno) || other.phno == phno) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
             (identical(other.createdat, createdat) ||
                 other.createdat == createdat) &&
             (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, username, address, phno, createdat, id);
+  int get hashCode => Object.hash(
+      runtimeType, username, address, phno, password, createdat, id);
 
   @JsonKey(ignore: true)
   @override
@@ -199,6 +217,7 @@ abstract class _UserModel extends UserModel {
       {required final String username,
       required final String address,
       required final String phno,
+      required final String password,
       required final DateTime createdat,
       required final String id}) = _$UserModelImpl;
   const _UserModel._() : super._();
@@ -209,6 +228,8 @@ abstract class _UserModel extends UserModel {
   String get address;
   @override
   String get phno;
+  @override
+  String get password;
   @override
   DateTime get createdat;
   @override
