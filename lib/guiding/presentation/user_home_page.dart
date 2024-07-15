@@ -1,4 +1,3 @@
-// user_home_page.dart
 import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -148,11 +147,58 @@ class UserHomePage extends ConsumerWidget {
           ),
           ListTile(
             leading: Icon(Icons.delete),
-            title: Text('Delete'),
+            title: const Text('Delete'),
             onTap: () {
               Navigator.pop(context);
-              context.router.pushNamed('/user-login');
+              _showDeleteConfirmationDialog(context, ref, currentUser!);
             },
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showDeleteConfirmationDialog(BuildContext context, WidgetRef ref, UserModel user) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Confirm Delete'),
+        content: const Text('Are you sure you want to delete your account?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () async {
+              Navigator.of(context).pop();
+              final result = await ref.read(userRepositoryProvider).deleteUser(user.id);
+              result.fold(
+                (error) => _showAlertDialog(context, 'Error', '$error.message'),
+                (success) {
+                 //ref.read(currentUserProvider.notifier).state = null;
+                  //context.router.pushAndPopUntil(UserLoginRoute(), predicate: (route) => false);
+                  context.router.pushNamed('/user-login');
+                },
+              );
+            },
+            child: const Text('Delete'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showAlertDialog(BuildContext context, String title, String content) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(title),
+        content: Text(content),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('OK'),
           ),
         ],
       ),

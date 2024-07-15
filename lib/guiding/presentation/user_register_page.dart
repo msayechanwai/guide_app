@@ -42,6 +42,10 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
               isButtonDisabled = false; // Re-enable the button if needed
             });
             clearFormFields();
+            // Show success message for a short duration before navigating
+            Future.delayed(const Duration(seconds: 2), () {
+              context.router.replace(const UserLoginRoute());
+            });
           },
         );
       },
@@ -115,6 +119,7 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                     filled: true,
                     prefixIcon: const Icon(Icons.key),
                   ),
+                  keyboardType: TextInputType.number,
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
