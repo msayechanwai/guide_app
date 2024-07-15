@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 
 import '../../splash/presentation/splash_page.dart';
 import 'package:guide_app/guiding/feat_guiding.dart';
@@ -15,5 +16,13 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: UserRegisterRoute.page, path: "/user-register"),
         AutoRoute(page: UserLoginRoute.page, path: "/user-login"),
         AutoRoute(page: UserHomeRoute.page, path: "/user-home"),
+        AutoRoute(page: UserEditRoute.page, path:"/user-update"),
+        AutoRoute(page: LoginUserUpdateRoute.page,path:"/user-login-update")
       ];
+      /* Route<dynamic> userHomePageRoute(UserModel user) {
+      return MaterialPageRoute(
+      builder: (context) => UserHomePage(currentUser: user),
+      settings: const RouteSettings(name: '/user-home'),
+    );
+  } */
 }

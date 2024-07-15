@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
+  carousel_slider: ^4.2.1
   shared_preferences: ^2.2.3
   uuid: ^3.0.7
   auto_route: ^7.8.3
@@ -37,7 +38,7 @@ flutter:
 
   assets:
     - assets/fonts/
-    - assets/images/welcome.jpg
+    - assets/images/
 
   fonts:
     - family: digital

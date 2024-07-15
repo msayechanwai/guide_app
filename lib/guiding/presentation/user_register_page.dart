@@ -113,7 +113,7 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                     ),
                     fillColor: Colors.lightBlue.withOpacity(0.1),
                     filled: true,
-                    prefixIcon: const Icon(Icons.password),
+                    prefixIcon: const Icon(Icons.key),
                   ),
                 ),
                 const SizedBox(height: 20),

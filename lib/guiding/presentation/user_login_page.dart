@@ -35,7 +35,7 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
       },
       (user) {
         if (user != null) {
-          context.router.push(const UserHomeRoute());
+          context.router.push(UserHomeRoute());
         } else {
           _showAlertDialog('Error', 'Invalid username or password');
         }
@@ -123,7 +123,7 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
                     ),
                     fillColor: Colors.lightBlue.withOpacity(0.1),
                     filled: true,
-                    prefixIcon: const Icon(Icons.password),
+                    prefixIcon: const Icon(Icons.key),
                   ),
                   keyboardType: TextInputType.number,
                 ),

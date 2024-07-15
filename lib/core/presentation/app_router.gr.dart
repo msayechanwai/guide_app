@@ -27,10 +27,26 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ChooseRoleScreen(),
       );
     },
+    LoginUserUpdateRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const LoginUserUpdatePage(),
+      );
+    },
     SplashRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SplashPage(),
+      );
+    },
+    UserEditRoute.name: (routeData) {
+      final args = routeData.argsAs<UserEditRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: UserEditPage(
+          args.user,
+          key: args.key,
+        ),
       );
     },
     UserHomeRoute.name: (routeData) {
@@ -89,6 +105,20 @@ class ChooseRoleRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [LoginUserUpdatePage]
+class LoginUserUpdateRoute extends PageRouteInfo<void> {
+  const LoginUserUpdateRoute({List<PageRouteInfo>? children})
+      : super(
+          LoginUserUpdateRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LoginUserUpdateRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [SplashPage]
 class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute({List<PageRouteInfo>? children})
@@ -100,6 +130,44 @@ class SplashRoute extends PageRouteInfo<void> {
   static const String name = 'SplashRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [UserEditPage]
+class UserEditRoute extends PageRouteInfo<UserEditRouteArgs> {
+  UserEditRoute({
+    required UserModel user,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          UserEditRoute.name,
+          args: UserEditRouteArgs(
+            user: user,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'UserEditRoute';
+
+  static const PageInfo<UserEditRouteArgs> page =
+      PageInfo<UserEditRouteArgs>(name);
+}
+
+class UserEditRouteArgs {
+  const UserEditRouteArgs({
+    required this.user,
+    this.key,
+  });
+
+  final UserModel user;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'UserEditRouteArgs{user: $user, key: $key}';
+  }
 }
 
 /// generated route for
