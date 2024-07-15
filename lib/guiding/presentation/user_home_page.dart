@@ -1,22 +1,19 @@
+// user_home_page.dart
 import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:guide_app/all_feat.dart';
-import 'package:guide_app/guiding/domain/domain.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../all_feat.dart';
+import '../feat_guiding.dart';
 
 @RoutePage()
-class UserHomePage extends StatefulWidget {
+class UserHomePage extends ConsumerWidget {
   const UserHomePage({super.key});
-
+  
   @override
-  State<UserHomePage> createState() => _UserHomePageState();
-}
-
-class _UserHomePageState extends State<UserHomePage> {
-  //UserModel currenUser;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentUser = ref.watch(currentUserProvider);
+    
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -103,7 +100,7 @@ class _UserHomePageState extends State<UserHomePage> {
                 context.router.replaceNamed('/teacher-detail');
                 break;
               case 2:
-                _showPopupMenu(context);
+                _showPopupMenu(context, ref);
                 break;
             }
           },
@@ -126,7 +123,8 @@ class _UserHomePageState extends State<UserHomePage> {
     );
   }
 
-  void _showPopupMenu(BuildContext context) {
+  void _showPopupMenu(BuildContext context, WidgetRef ref) {
+    final currentUser = ref.watch(currentUserProvider);
     showModalBottomSheet(
       context: context,
       builder: (context) => Column(
@@ -145,7 +143,7 @@ class _UserHomePageState extends State<UserHomePage> {
             title: const Text('Edit Info'),
             onTap: () {
               Navigator.pop(context);
-              context.router.pushNamed('/user-login-update'); // Correct route name
+              context.router.push(UserEditRoute(user: currentUser!));
             },
           ),
           ListTile(
@@ -154,7 +152,6 @@ class _UserHomePageState extends State<UserHomePage> {
             onTap: () {
               Navigator.pop(context);
               context.router.pushNamed('/user-login');
-             // context.router.push(UserEditRoute(user: user))
             },
           ),
         ],

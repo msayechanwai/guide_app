@@ -30,3 +30,5 @@ final userUpdateNotifierProvider =
     StateNotifierProvider<UserUpdateNotifier, UserUpdateState>((ref) {
   return UserUpdateNotifier(ref.watch(userRepositoryProvider));
 });
+
+final currentUserProvider = StateProvider<UserModel?>((ref) => null);//add new

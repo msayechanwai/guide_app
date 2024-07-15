@@ -1,8 +1,8 @@
+// user_login_page.dart
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:guide_app/all_feat.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import '../feat_guiding.dart';
 
 @RoutePage()
@@ -35,6 +35,8 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
       },
       (user) {
         if (user != null) {
+          // Store user data in provider
+          ref.read(currentUserProvider.notifier).state = user;
           context.router.push(UserHomeRoute());
         } else {
           _showAlertDialog('Error', 'Invalid username or password');
@@ -61,17 +63,6 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(
-      userAddNotifierProvider,
-      (previous, state) {
-        state.maybeWhen(
-            orElse: () {},
-            success: (data) {
-              // context.router.back();
-            });
-      },
-    );
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
