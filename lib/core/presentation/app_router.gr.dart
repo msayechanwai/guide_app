@@ -27,12 +27,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ChooseRoleScreen(),
       );
     },
-    LoginUserUpdateRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const LoginUserUpdatePage(),
-      );
-    },
     SplashRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -100,20 +94,6 @@ class ChooseRoleRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ChooseRoleRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [LoginUserUpdatePage]
-class LoginUserUpdateRoute extends PageRouteInfo<void> {
-  const LoginUserUpdateRoute({List<PageRouteInfo>? children})
-      : super(
-          LoginUserUpdateRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'LoginUserUpdateRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

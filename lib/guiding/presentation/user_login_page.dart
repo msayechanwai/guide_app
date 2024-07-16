@@ -1,8 +1,8 @@
-// user_login_page.dart
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:guide_app/all_feat.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../feat_guiding.dart';
 
 @RoutePage()
@@ -33,11 +33,17 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
       (error) {
         _showAlertDialog('Error', '$error.message');
       },
-      (user) {
+      (user) async {
         if (user != null) {
           // Store user data in provider
           ref.read(currentUserProvider.notifier).state = user;
-          context.router.push(UserHomeRoute());
+
+          // Save user data to SharedPreferences
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setString('user_id', user.id);
+          await prefs.setString('username', user.username);
+
+          context.router.replace(UserHomeRoute());
         } else {
           _showAlertDialog('Error', 'Invalid username or password');
         }

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../all_feat.dart';
 import '../feat_guiding.dart';
 
@@ -12,7 +13,7 @@ class UserHomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentUser = ref.watch(currentUserProvider);
-    
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -132,9 +133,14 @@ class UserHomePage extends ConsumerWidget {
           ListTile(
             leading: Icon(Icons.logout),
             title: const Text('Logout'),
-            onTap: () {
+            onTap: () async {
+              final prefs = await SharedPreferences.getInstance();
+              await prefs.remove('user_id');
+              await prefs.remove('username');
+
+              ref.read(currentUserProvider.notifier).state = null;
               Navigator.pop(context);
-              context.router.pushNamed('/user-login');
+              context.router.replaceAll([UserLoginRoute()]);
             },
           ),
           ListTile(
@@ -176,9 +182,8 @@ class UserHomePage extends ConsumerWidget {
               result.fold(
                 (error) => _showAlertDialog(context, 'Error', '$error.message'),
                 (success) {
-                 //ref.read(currentUserProvider.notifier).state = null;
-                  //context.router.pushAndPopUntil(UserLoginRoute(), predicate: (route) => false);
-                  context.router.pushNamed('/user-login');
+                  ref.read(currentUserProvider.notifier).state = null;
+                  context.router.replaceAll([UserLoginRoute()]);
                 },
               );
             },

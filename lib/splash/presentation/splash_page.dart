@@ -1,9 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../all_feat.dart';
-
 
 @RoutePage()
 class SplashPage extends ConsumerStatefulWidget {
@@ -17,13 +16,20 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   @override
   void initState() {
     super.initState();
-    gotoHome();
+    gotoNextPage();
   }
 
-  Future<void> gotoHome() async {
+  Future<void> gotoNextPage() async {
     await Future.delayed(const Duration(seconds: 3));
-    //AutoRouter.of(context).replaceAll([const ProductDetailRoute()]);
-     AutoRouter.of(context).push(const WelcomeRoute());
+
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getString('user_id');
+
+    if (userId != null) {
+      context.router.replace(const UserHomeRoute());
+    } else {
+      context.router.replace(const WelcomeRoute());
+    }
   }
 
   @override
