@@ -16,7 +16,7 @@ class UserLoginPage extends ConsumerStatefulWidget {
 class _UserLoginPageState extends ConsumerState<UserLoginPage> {
   final userNameController = TextEditingController();
   final pswdController = TextEditingController();
-
+  bool _obsecureText = true;//visible control
   Future<void> _login() async {
     final username = userNameController.text.trim();
     final password = pswdController.text.trim();
@@ -111,6 +111,7 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
+                  obscureText: _obsecureText,//visible control
                   controller: pswdController,
                   decoration: InputDecoration(
                     hintText: "Your Password",
@@ -121,6 +122,16 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
                     fillColor: Colors.lightBlue.withOpacity(0.1),
                     filled: true,
                     prefixIcon: const Icon(Icons.key),
+                    /* visible control block */
+                    suffixIcon: IconButton(
+                      onPressed: (){
+                        setState(() {
+                          _obsecureText =!_obsecureText;
+                        });
+                      },
+                      icon: Icon(_obsecureText ? Icons.visibility: Icons.visibility_off),
+                    ),
+                    /* end visible control block*/
                   ),
                   keyboardType: TextInputType.number,
                 ),

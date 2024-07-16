@@ -20,7 +20,7 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
   final pswdController = TextEditingController();
   bool isButtonDisabled = false;
   bool isSuccess = false;
-
+  bool _obsecureText =true;//test
   void clearFormFields() {
     userNameController.clear();
     addressController.clear();
@@ -108,6 +108,7 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
+                  obscureText: _obsecureText,//test
                   controller: pswdController,
                   decoration: InputDecoration(
                     hintText: "Your Password",
@@ -118,6 +119,14 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                     fillColor: Colors.lightBlue.withOpacity(0.1),
                     filled: true,
                     prefixIcon: const Icon(Icons.key),
+                    suffixIcon: IconButton(
+                      onPressed: (){
+                        setState(() {
+                          _obsecureText =!_obsecureText;
+                        });
+                      },
+                      icon: Icon(_obsecureText ? Icons.visibility: Icons.visibility_off),
+                    ),
                   ),
                   keyboardType: TextInputType.number,
                 ),
