@@ -19,8 +19,10 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
   final phnoController = TextEditingController();
   final pswdController = TextEditingController();
   bool isButtonDisabled = false;
+  bool isLoading = false;
   bool isSuccess = false;
-  bool _obsecureText =true;//test
+  bool _obsecureText = true;
+
   void clearFormFields() {
     userNameController.clear();
     addressController.clear();
@@ -36,8 +38,15 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
         print("userAddNotifierProvider => $state");
         state.maybeWhen(
           orElse: () {},
+          loading: () {
+            setState(() {
+              isLoading = true;
+              isButtonDisabled = true;
+            });
+          },
           success: (data) {
             setState(() {
+              isLoading = false;
               isSuccess = true;
               isButtonDisabled = false; // Re-enable the button if needed
             });
@@ -45,6 +54,12 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
             // Show success message for a short duration before navigating
             Future.delayed(const Duration(seconds: 2), () {
               context.router.replace(const UserLoginRoute());
+            });
+          },
+          error: (error) {
+            setState(() {
+              isLoading = false;
+              isButtonDisabled = false;
             });
           },
         );
@@ -108,7 +123,7 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
-                  obscureText: _obsecureText,//test
+                  obscureText: _obsecureText,
                   controller: pswdController,
                   decoration: InputDecoration(
                     hintText: "Your Password",
@@ -120,12 +135,12 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                     filled: true,
                     prefixIcon: const Icon(Icons.key),
                     suffixIcon: IconButton(
-                      onPressed: (){
+                      onPressed: () {
                         setState(() {
-                          _obsecureText =!_obsecureText;
+                          _obsecureText = !_obsecureText;
                         });
                       },
-                      icon: Icon(_obsecureText ? Icons.visibility: Icons.visibility_off),
+                      icon: Icon(_obsecureText ? Icons.visibility : Icons.visibility_off),
                     ),
                   ),
                   keyboardType: TextInputType.number,
@@ -149,6 +164,7 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                   onPressed: isButtonDisabled ? null : () {
                     setState(() {
                       isButtonDisabled = true;
+                      isLoading = true;
                     });
                     UserModel user = UserModel(
                       username: userNameController.text,
@@ -161,10 +177,19 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                     print(user);
                     ref.read(userAddNotifierProvider.notifier).addUser(user);
                   },
-                  child: const Text(
-                    "Register",
-                    style: TextStyle(fontSize: 20),
-                  ),
+                  child: isLoading
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            CircularProgressIndicator(color: Colors.white),
+                            SizedBox(width: 16),
+                            Text("Registering..."),
+                          ],
+                        )
+                      : const Text(
+                          "Register",
+                          style: TextStyle(fontSize: 20),
+                        ),
                   style: ElevatedButton.styleFrom(
                     shape: const StadiumBorder(),
                     padding: const EdgeInsets.symmetric(vertical: 16),
