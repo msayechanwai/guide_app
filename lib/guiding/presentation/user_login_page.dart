@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:guide_app/all_feat.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../all_feat.dart';
 import '../feat_guiding.dart';
 
 @RoutePage()
@@ -16,7 +16,7 @@ class UserLoginPage extends ConsumerStatefulWidget {
 class _UserLoginPageState extends ConsumerState<UserLoginPage> {
   final userNameController = TextEditingController();
   final pswdController = TextEditingController();
-  bool _obsecureText = true;
+  bool _obscureText = true;
   bool isLoading = false; // Loading state
 
   Future<void> _login() async {
@@ -54,6 +54,10 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
           final prefs = await SharedPreferences.getInstance();
           await prefs.setString('user_id', user.id);
           await prefs.setString('username', user.username);
+          await prefs.setString('phno', user.phno);
+          await prefs.setString('password', user.password);
+          await prefs.setString('address', user.address);
+          await prefs.setString('createdat', user.createdat.toIso8601String());
 
           setState(() {
             isLoading = false; // Set loading state to false on success
@@ -130,7 +134,7 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
-                  obscureText: _obsecureText,
+                  obscureText: _obscureText,
                   controller: pswdController,
                   decoration: InputDecoration(
                     hintText: "Your Password",
@@ -144,10 +148,12 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
                     suffixIcon: IconButton(
                       onPressed: () {
                         setState(() {
-                          _obsecureText = !_obsecureText;
+                          _obscureText = !_obscureText;
                         });
                       },
-                      icon: Icon(_obsecureText ?Icons.visibility_off  : Icons.visibility),
+                      icon: Icon(
+                        _obscureText ? Icons.visibility_off : Icons.visibility,
+                      ),
                     ),
                   ),
                   keyboardType: TextInputType.number,
