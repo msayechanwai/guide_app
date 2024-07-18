@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../../guiding/presentation/user_profile_page.dart';
 import '../../splash/presentation/splash_page.dart';
 import 'package:guide_app/guiding/feat_guiding.dart';
 part 'app_router.gr.dart';

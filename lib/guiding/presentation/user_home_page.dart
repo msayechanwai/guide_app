@@ -6,11 +6,18 @@ import '../../all_feat.dart';
 import '../feat_guiding.dart';
 
 @RoutePage()
-class UserHomePage extends ConsumerWidget {
+class UserHomePage extends ConsumerStatefulWidget {
   const UserHomePage({super.key});
-  
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _UserHomePageState createState() => _UserHomePageState();
+}
+
+class _UserHomePageState extends ConsumerState<UserHomePage> {
+  int selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
     final currentUser = ref.watch(currentUserProvider);
 
     return MaterialApp(
@@ -18,10 +25,12 @@ class UserHomePage extends ConsumerWidget {
       home: Scaffold(
         backgroundColor: Colors.lightBlue[50],
         appBar: AppBar(
-          title: const Text('Guiding App',
-          style:TextStyle(fontWeight: FontWeight.bold,)),
+          title: const Text(
+            'Guiding App',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           backgroundColor: Colors.lightBlue[50],
-        ), 
+        ),
         body: Column(
           children: [
             // First row with image slider
@@ -79,6 +88,9 @@ class UserHomePage extends ConsumerWidget {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
+          currentIndex: selectedIndex,
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.grey,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -94,6 +106,9 @@ class UserHomePage extends ConsumerWidget {
             ),
           ],
           onTap: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
             switch (index) {
               case 0:
                 context.router.replaceNamed('/user-home');
@@ -102,12 +117,6 @@ class UserHomePage extends ConsumerWidget {
                 context.router.replaceNamed('/teacher-detail');
                 break;
               case 2:
-                /*  if (currentUser != null) {
-                  context.router.push(UserProfileRoute(user: currentUser));
-                } else {
-                  context.router.replaceNamed('/user-login');
-                }  */
-                
                 context.router.push(UserProfileRoute(user: currentUser!));
                 break;
             }

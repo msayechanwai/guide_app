@@ -1,4 +1,3 @@
-// user_update_page.dart
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -35,16 +34,18 @@ class _UserEditPageState extends ConsumerState<UserEditPage> {
     ref.listen(
       userUpdateNotifierProvider,
       (previous, state) {
-        print("userUpdateNotifierProvider => $state");
         state.maybeWhen(
           orElse: () {},
           success: (data) {
-           // context.router.back();
-           context.router.replace(const UserHomeRoute());
+            // Update the current user in provider
+            ref.read(currentUserProvider.notifier).state = data;
+            // Replace to UserProfilePage
+            context.router.replace(const UserHomeRoute());
           },
         );
       },
     );
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -119,7 +120,8 @@ class _UserEditPageState extends ConsumerState<UserEditPage> {
                           _obsecureText = !_obsecureText;
                         });
                       },
-                      icon: Icon(_obsecureText ?Icons.visibility_off  : Icons.visibility),
+                      icon: Icon(
+                          _obsecureText ? Icons.visibility_off : Icons.visibility),
                     ),
                   ),
                   keyboardType: TextInputType.number,
@@ -139,32 +141,30 @@ class _UserEditPageState extends ConsumerState<UserEditPage> {
                   ),
                 ),
                 const SizedBox(height: 40),
-               ElevatedButton(
-              onPressed: () {
-                UserModel user = UserModel(
-                  username: userNameController.text,
-                  phno: phnoController.text,
-                  password: passwordController.text,
-                  address: addressController.text,
-                  createdat: widget.user.createdat,
-                  id: widget.user.id,
-                );
-                print(user);
-                ref.read(userUpdateNotifierProvider.notifier).updateUser(user);
-              },
-              style: ElevatedButton.styleFrom(
+                ElevatedButton(
+                  onPressed: () {
+                    UserModel user = UserModel(
+                      username: userNameController.text,
+                      phno: phnoController.text,
+                      password: passwordController.text,
+                      address: addressController.text,
+                      createdat: widget.user.createdat,
+                      id: widget.user.id,
+                    );
+                    ref.read(userUpdateNotifierProvider.notifier).updateUser(user);
+                  },
+                  style: ElevatedButton.styleFrom(
                     shape: const StadiumBorder(),
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     backgroundColor: Colors.lightBlue[200],
                   ),
-              child: const Text("Update"),
-            ),
+                  child: const Text("Update"),
+                ),
               ],
             ),
           ),
         ),
       ),
     );
-    
   }
 }
