@@ -16,12 +16,21 @@ class UserLoginPage extends ConsumerStatefulWidget {
 class _UserLoginPageState extends ConsumerState<UserLoginPage> {
   final userNameController = TextEditingController();
   final pswdController = TextEditingController();
-  bool _obsecureText = true;//visible control
+  bool _obsecureText = true;
+  bool isLoading = false; // Loading state
+
   Future<void> _login() async {
+    setState(() {
+      isLoading = true; // Set loading state to true when login starts
+    });
+
     final username = userNameController.text.trim();
     final password = pswdController.text.trim();
 
     if (username.isEmpty || password.isEmpty) {
+      setState(() {
+        isLoading = false; // Set loading state to false if validation fails
+      });
       _showAlertDialog('Error', 'Please fill in all fields');
       return;
     }
@@ -31,6 +40,9 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
 
     result.fold(
       (error) {
+        setState(() {
+          isLoading = false; // Set loading state to false on error
+        });
         _showAlertDialog('Error', '$error.message');
       },
       (user) async {
@@ -43,8 +55,15 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
           await prefs.setString('user_id', user.id);
           await prefs.setString('username', user.username);
 
+          setState(() {
+            isLoading = false; // Set loading state to false on success
+          });
+
           context.router.replace(UserHomeRoute());
         } else {
+          setState(() {
+            isLoading = false; // Set loading state to false on invalid login
+          });
           _showAlertDialog('Error', 'Invalid username or password');
         }
       },
@@ -111,7 +130,7 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
-                  obscureText: _obsecureText,//visible control
+                  obscureText: _obsecureText,
                   controller: pswdController,
                   decoration: InputDecoration(
                     hintText: "Your Password",
@@ -122,26 +141,33 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
                     fillColor: Colors.lightBlue.withOpacity(0.1),
                     filled: true,
                     prefixIcon: const Icon(Icons.key),
-                    /* visible control block */
                     suffixIcon: IconButton(
-                      onPressed: (){
+                      onPressed: () {
                         setState(() {
-                          _obsecureText =!_obsecureText;
+                          _obsecureText = !_obsecureText;
                         });
                       },
-                      icon: Icon(_obsecureText ? Icons.visibility: Icons.visibility_off),
+                      icon: Icon(_obsecureText ?Icons.visibility_off  : Icons.visibility),
                     ),
-                    /* end visible control block*/
                   ),
                   keyboardType: TextInputType.number,
                 ),
                 const SizedBox(height: 40),
                 ElevatedButton(
-                  onPressed: _login,
-                  child: const Text(
-                    "Login",
-                    style: TextStyle(fontSize: 16),
-                  ),
+                  onPressed: isLoading ? null : _login,
+                  child: isLoading
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            CircularProgressIndicator(color: Colors.white),
+                            SizedBox(width: 16),
+                            Text("Logging in..."),
+                          ],
+                        )
+                      : const Text(
+                          "Login",
+                          style: TextStyle(fontSize: 16),
+                        ),
                   style: ElevatedButton.styleFrom(
                     shape: const StadiumBorder(),
                     padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),

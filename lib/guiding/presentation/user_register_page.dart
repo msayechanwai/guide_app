@@ -140,7 +140,8 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                           _obsecureText = !_obsecureText;
                         });
                       },
-                      icon: Icon(_obsecureText ? Icons.visibility : Icons.visibility_off),
+                      icon: Icon(_obsecureText ?Icons.visibility_off  : Icons.visibility),
+                     // icon: Icon(_obsecureText ? Icons.visibility : Icons.visibility_off),
                     ),
                   ),
                   keyboardType: TextInputType.number,

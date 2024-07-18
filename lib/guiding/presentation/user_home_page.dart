@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../all_feat.dart';
 import '../feat_guiding.dart';
 
@@ -17,9 +16,12 @@ class UserHomePage extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.lightBlue[50],
         appBar: AppBar(
-          title: const Text('Guiding App'),
-        ),
+          title: const Text('Guiding App',
+          style:TextStyle(fontWeight: FontWeight.bold,)),
+          backgroundColor: Colors.lightBlue[50],
+        ), 
         body: Column(
           children: [
             // First row with image slider
@@ -63,10 +65,10 @@ class UserHomePage extends ConsumerWidget {
                   children: [
                     _buildCard('assets/images/ielts.jpg', 'IELTS'),
                     _buildCard('assets/images/tofel.jpg', 'TOFEL'),
-                    _buildCard('assets/images/dulingo.jpg', 'DULINGO'),
-                    _buildCard('assets/images/japan.jpg', 'Japan'),
-                    _buildCard('assets/images/korea.jpg', 'Korea'),
-                    _buildCard('assets/images/thailand.jpg', 'Thailand'),
+                    _buildCard('assets/images/welcome.jpg', 'DULINGO'),
+                    _buildCard('assets/images/japan.jpg', 'JAPAN'),
+                    _buildCard('assets/images/korea.jpg', 'KOREA'),
+                    _buildCard('assets/images/thailand.jpg', 'THAILAND'),
                     _buildCard('assets/images/js.jpg', 'JavaScript'),
                     _buildCard('assets/images/java.jpg', 'Java'),
                     _buildCard('assets/images/python.jpg', 'Python'),
@@ -94,13 +96,19 @@ class UserHomePage extends ConsumerWidget {
           onTap: (index) {
             switch (index) {
               case 0:
-                context.router.replaceNamed('/home');
+                context.router.replaceNamed('/user-home');
                 break;
               case 1:
                 context.router.replaceNamed('/teacher-detail');
                 break;
               case 2:
-                _showPopupMenu(context, ref);
+                /*  if (currentUser != null) {
+                  context.router.push(UserProfileRoute(user: currentUser));
+                } else {
+                  context.router.replaceNamed('/user-login');
+                }  */
+                
+                context.router.push(UserProfileRoute(user: currentUser!));
                 break;
             }
           },
@@ -119,93 +127,6 @@ class UserHomePage extends ConsumerWidget {
             Text(title),
           ],
         ),
-      ),
-    );
-  }
-
-  void _showPopupMenu(BuildContext context, WidgetRef ref) {
-    final currentUser = ref.watch(currentUserProvider);
-    showModalBottomSheet(
-      context: context,
-      builder: (context) => Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: const Text('Logout'),
-            onTap: () async {
-              final prefs = await SharedPreferences.getInstance();
-              await prefs.remove('user_id');
-              await prefs.remove('username');
-
-              ref.read(currentUserProvider.notifier).state = null;
-              Navigator.pop(context);
-              context.router.replaceAll([UserLoginRoute()]);
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.edit),
-            title: const Text('Edit Info'),
-            onTap: () {
-              Navigator.pop(context);
-              context.router.push(UserEditRoute(user: currentUser!));
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.delete),
-            title: const Text('Delete'),
-            onTap: () {
-              Navigator.pop(context);
-              _showDeleteConfirmationDialog(context, ref, currentUser!);
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showDeleteConfirmationDialog(BuildContext context, WidgetRef ref, UserModel user) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Confirm Delete'),
-        content: const Text('Are you sure you want to delete your account?'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () async {
-              Navigator.of(context).pop();
-              final result = await ref.read(userRepositoryProvider).deleteUser(user.id);
-              result.fold(
-                (error) => _showAlertDialog(context, 'Error', '$error.message'),
-                (success) {
-                  ref.read(currentUserProvider.notifier).state = null;
-                  context.router.replaceAll([UserLoginRoute()]);
-                },
-              );
-            },
-            child: const Text('Delete'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showAlertDialog(BuildContext context, String title, String content) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(title),
-        content: Text(content),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text('OK'),
-          ),
-        ],
       ),
     );
   }
