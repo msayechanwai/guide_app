@@ -137,7 +137,7 @@ class _UserEditPageState extends ConsumerState<UserEditPage> {
                     ),
                     fillColor: Colors.lightBlue.withOpacity(0.1),
                     filled: true,
-                    prefixIcon: const Icon(Icons.home),
+                    prefixIcon: const Icon(Icons.location_on),
                   ),
                 ),
                 const SizedBox(height: 40),

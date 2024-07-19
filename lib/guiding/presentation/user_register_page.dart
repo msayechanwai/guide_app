@@ -153,11 +153,12 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                     hintText: "Your Address",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(18),
+                      
                       borderSide: BorderSide.none,
                     ),
                     fillColor: Colors.lightBlue.withOpacity(0.1),
                     filled: true,
-                    prefixIcon: const Icon(Icons.home),
+                    prefixIcon: const Icon(Icons.location_on),
                   ),
                 ),
                 const SizedBox(height: 40),

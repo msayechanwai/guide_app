@@ -25,7 +25,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
     await Future.delayed(const Duration(seconds: 3));
 
     final prefs = await SharedPreferences.getInstance();
-    final userId = prefs.getString('user_id');
+    final userId = prefs.getString('id');
     final username = prefs.getString('username');
     final phno = prefs.getString('phno');
     final password = prefs.getString('password');

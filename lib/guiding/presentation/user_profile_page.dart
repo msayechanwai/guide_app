@@ -24,6 +24,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
     return Scaffold(
       backgroundColor: Colors.lightBlue[50],
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.lightBlue[50],
         title: const Text("Personal Information"),
         actions: [
@@ -108,7 +109,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                   ),
                   ListTile(
                     leading: Icon(Icons.phone),
-                    title: Text('Phone Number: ${user.phno}'),
+                    title: Text('Phone : ${user.phno}'),
                   ),
                   ListTile(
                     leading: Icon(Icons.location_on),
