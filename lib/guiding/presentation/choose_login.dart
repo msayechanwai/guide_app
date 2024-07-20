@@ -48,7 +48,6 @@ class ChooseLoginScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    //context.router.push(const UserLoginRoute());
                     context.router.push(const UserLoginRoute());
                   },
                   style: ElevatedButton.styleFrom(
@@ -66,7 +65,7 @@ class ChooseLoginScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to Sign Up screen
+                    context.router.push(const TeacherLoginRoute());
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.green,

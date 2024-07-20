@@ -5,3 +5,8 @@ export 'user_register_page.dart';
 export 'user_login_page.dart';
 export 'user_home_page.dart';
 export 'user_update_page.dart';
+export 'teacher_login_page.dart';
+export 'teacher_register_page.dart';
+export 'teacher_home_page.dart';
+export 'teacher_profile_page.dart';
+export 'teacher_update_page.dart';

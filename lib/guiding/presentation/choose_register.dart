@@ -65,7 +65,7 @@ class ChooseRoleScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to Sign Up screen
+                    context.router.push(const TeacherRegisterRoute());
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.green,

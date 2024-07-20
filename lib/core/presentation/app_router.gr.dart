@@ -33,6 +33,40 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SplashPage(),
       );
     },
+    TeacherEditRoute.name: (routeData) {
+      final args = routeData.argsAs<TeacherEditRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: TeacherEditPage(
+          args.teacher,
+          key: args.key,
+        ),
+      );
+    },
+    TeacherHomeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TeacherHomePage(),
+      );
+    },
+    TeacherLoginRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TeacherLoginPage(),
+      );
+    },
+    TeacherProfileRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TeacherProfilePage(),
+      );
+    },
+    TeacherRegisterRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TeacherRegisterPage(),
+      );
+    },
     UserEditRoute.name: (routeData) {
       final args = routeData.argsAs<UserEditRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -114,6 +148,100 @@ class SplashRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SplashRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TeacherEditPage]
+class TeacherEditRoute extends PageRouteInfo<TeacherEditRouteArgs> {
+  TeacherEditRoute({
+    required TeacherModel teacher,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          TeacherEditRoute.name,
+          args: TeacherEditRouteArgs(
+            teacher: teacher,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'TeacherEditRoute';
+
+  static const PageInfo<TeacherEditRouteArgs> page =
+      PageInfo<TeacherEditRouteArgs>(name);
+}
+
+class TeacherEditRouteArgs {
+  const TeacherEditRouteArgs({
+    required this.teacher,
+    this.key,
+  });
+
+  final TeacherModel teacher;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'TeacherEditRouteArgs{teacher: $teacher, key: $key}';
+  }
+}
+
+/// generated route for
+/// [TeacherHomePage]
+class TeacherHomeRoute extends PageRouteInfo<void> {
+  const TeacherHomeRoute({List<PageRouteInfo>? children})
+      : super(
+          TeacherHomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TeacherHomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TeacherLoginPage]
+class TeacherLoginRoute extends PageRouteInfo<void> {
+  const TeacherLoginRoute({List<PageRouteInfo>? children})
+      : super(
+          TeacherLoginRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TeacherLoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TeacherProfilePage]
+class TeacherProfileRoute extends PageRouteInfo<void> {
+  const TeacherProfileRoute({List<PageRouteInfo>? children, required TeacherModel teacher})
+      : super(
+          TeacherProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TeacherProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TeacherRegisterPage]
+class TeacherRegisterRoute extends PageRouteInfo<void> {
+  const TeacherRegisterRoute({List<PageRouteInfo>? children})
+      : super(
+          TeacherRegisterRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TeacherRegisterRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

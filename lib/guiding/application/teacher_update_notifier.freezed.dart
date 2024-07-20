@@ -21,7 +21,7 @@ mixin _$TeacherUpdateState {
     required TResult Function() inital,
     required TResult Function() loading,
     required TResult Function() noInternet,
-    required TResult Function(TeacherModel user) success,
+    required TResult Function(TeacherModel teacher) success,
     required TResult Function(ResponseInfoError error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,7 +30,7 @@ mixin _$TeacherUpdateState {
     TResult? Function()? inital,
     TResult? Function()? loading,
     TResult? Function()? noInternet,
-    TResult? Function(TeacherModel user)? success,
+    TResult? Function(TeacherModel teacher)? success,
     TResult? Function(ResponseInfoError error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ mixin _$TeacherUpdateState {
     TResult Function()? inital,
     TResult Function()? loading,
     TResult Function()? noInternet,
-    TResult Function(TeacherModel user)? success,
+    TResult Function(TeacherModel teacher)? success,
     TResult Function(ResponseInfoError error)? error,
     required TResult orElse(),
   }) =>
@@ -133,7 +133,7 @@ class _$InitalImpl implements _Inital {
     required TResult Function() inital,
     required TResult Function() loading,
     required TResult Function() noInternet,
-    required TResult Function(TeacherModel user) success,
+    required TResult Function(TeacherModel teacher) success,
     required TResult Function(ResponseInfoError error) error,
   }) {
     return inital();
@@ -145,7 +145,7 @@ class _$InitalImpl implements _Inital {
     TResult? Function()? inital,
     TResult? Function()? loading,
     TResult? Function()? noInternet,
-    TResult? Function(TeacherModel user)? success,
+    TResult? Function(TeacherModel teacher)? success,
     TResult? Function(ResponseInfoError error)? error,
   }) {
     return inital?.call();
@@ -157,7 +157,7 @@ class _$InitalImpl implements _Inital {
     TResult Function()? inital,
     TResult Function()? loading,
     TResult Function()? noInternet,
-    TResult Function(TeacherModel user)? success,
+    TResult Function(TeacherModel teacher)? success,
     TResult Function(ResponseInfoError error)? error,
     required TResult orElse(),
   }) {
@@ -253,7 +253,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() inital,
     required TResult Function() loading,
     required TResult Function() noInternet,
-    required TResult Function(TeacherModel user) success,
+    required TResult Function(TeacherModel teacher) success,
     required TResult Function(ResponseInfoError error) error,
   }) {
     return loading();
@@ -265,7 +265,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? inital,
     TResult? Function()? loading,
     TResult? Function()? noInternet,
-    TResult? Function(TeacherModel user)? success,
+    TResult? Function(TeacherModel teacher)? success,
     TResult? Function(ResponseInfoError error)? error,
   }) {
     return loading?.call();
@@ -277,7 +277,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? inital,
     TResult Function()? loading,
     TResult Function()? noInternet,
-    TResult Function(TeacherModel user)? success,
+    TResult Function(TeacherModel teacher)? success,
     TResult Function(ResponseInfoError error)? error,
     required TResult orElse(),
   }) {
@@ -373,7 +373,7 @@ class _$NoInternetImpl implements _NoInternet {
     required TResult Function() inital,
     required TResult Function() loading,
     required TResult Function() noInternet,
-    required TResult Function(TeacherModel user) success,
+    required TResult Function(TeacherModel teacher) success,
     required TResult Function(ResponseInfoError error) error,
   }) {
     return noInternet();
@@ -385,7 +385,7 @@ class _$NoInternetImpl implements _NoInternet {
     TResult? Function()? inital,
     TResult? Function()? loading,
     TResult? Function()? noInternet,
-    TResult? Function(TeacherModel user)? success,
+    TResult? Function(TeacherModel teacher)? success,
     TResult? Function(ResponseInfoError error)? error,
   }) {
     return noInternet?.call();
@@ -397,7 +397,7 @@ class _$NoInternetImpl implements _NoInternet {
     TResult Function()? inital,
     TResult Function()? loading,
     TResult Function()? noInternet,
-    TResult Function(TeacherModel user)? success,
+    TResult Function(TeacherModel teacher)? success,
     TResult Function(ResponseInfoError error)? error,
     required TResult orElse(),
   }) {
@@ -458,9 +458,9 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({TeacherModel user});
+  $Res call({TeacherModel teacher});
 
-  $TeacherModelCopyWith<$Res> get user;
+  $TeacherModelCopyWith<$Res> get teacher;
 }
 
 /// @nodoc
@@ -474,21 +474,21 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? teacher = null,
   }) {
     return _then(_$SuccessImpl(
-      null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
+      null == teacher
+          ? _value.teacher
+          : teacher // ignore: cast_nullable_to_non_nullable
               as TeacherModel,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $TeacherModelCopyWith<$Res> get user {
-    return $TeacherModelCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
+  $TeacherModelCopyWith<$Res> get teacher {
+    return $TeacherModelCopyWith<$Res>(_value.teacher, (value) {
+      return _then(_value.copyWith(teacher: value));
     });
   }
 }
@@ -496,14 +496,14 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.user);
+  const _$SuccessImpl(this.teacher);
 
   @override
-  final TeacherModel user;
+  final TeacherModel teacher;
 
   @override
   String toString() {
-    return 'TeacherUpdateState.success(user: $user)';
+    return 'TeacherUpdateState.success(teacher: $teacher)';
   }
 
   @override
@@ -511,11 +511,11 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.teacher, teacher) || other.teacher == teacher));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, teacher);
 
   @JsonKey(ignore: true)
   @override
@@ -529,10 +529,10 @@ class _$SuccessImpl implements _Success {
     required TResult Function() inital,
     required TResult Function() loading,
     required TResult Function() noInternet,
-    required TResult Function(TeacherModel user) success,
+    required TResult Function(TeacherModel teacher) success,
     required TResult Function(ResponseInfoError error) error,
   }) {
-    return success(user);
+    return success(teacher);
   }
 
   @override
@@ -541,10 +541,10 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? inital,
     TResult? Function()? loading,
     TResult? Function()? noInternet,
-    TResult? Function(TeacherModel user)? success,
+    TResult? Function(TeacherModel teacher)? success,
     TResult? Function(ResponseInfoError error)? error,
   }) {
-    return success?.call(user);
+    return success?.call(teacher);
   }
 
   @override
@@ -553,12 +553,12 @@ class _$SuccessImpl implements _Success {
     TResult Function()? inital,
     TResult Function()? loading,
     TResult Function()? noInternet,
-    TResult Function(TeacherModel user)? success,
+    TResult Function(TeacherModel teacher)? success,
     TResult Function(ResponseInfoError error)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(user);
+      return success(teacher);
     }
     return orElse();
   }
@@ -605,9 +605,9 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements TeacherUpdateState {
-  const factory _Success(final TeacherModel user) = _$SuccessImpl;
+  const factory _Success(final TeacherModel teacher) = _$SuccessImpl;
 
-  TeacherModel get user;
+  TeacherModel get teacher;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -690,7 +690,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() inital,
     required TResult Function() loading,
     required TResult Function() noInternet,
-    required TResult Function(TeacherModel user) success,
+    required TResult Function(TeacherModel teacher) success,
     required TResult Function(ResponseInfoError error) error,
   }) {
     return error(this.error);
@@ -702,7 +702,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? inital,
     TResult? Function()? loading,
     TResult? Function()? noInternet,
-    TResult? Function(TeacherModel user)? success,
+    TResult? Function(TeacherModel teacher)? success,
     TResult? Function(ResponseInfoError error)? error,
   }) {
     return error?.call(this.error);
@@ -714,7 +714,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? inital,
     TResult Function()? loading,
     TResult Function()? noInternet,
-    TResult Function(TeacherModel user)? success,
+    TResult Function(TeacherModel teacher)? success,
     TResult Function(ResponseInfoError error)? error,
     required TResult orElse(),
   }) {
