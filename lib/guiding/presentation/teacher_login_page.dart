@@ -52,9 +52,10 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
 
           // Save teacher data to SharedPreferences
           final prefs = await SharedPreferences.getInstance();
-          await prefs.setString('teacherId', teacher.teacherId);
+          await prefs.setString('id', teacher.id);
           await prefs.setString('teacherName', teacher.teacherName);
           await prefs.setString('education', teacher.education);
+          await prefs.setString('major',teacher.major);
           await prefs.setString('phno', teacher.phno);
           await prefs.setString('password', teacher.password);
           await prefs.setString('address', teacher.address);

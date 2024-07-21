@@ -52,7 +52,7 @@ class _UserLoginPageState extends ConsumerState<UserLoginPage> {
 
           // Save user data to SharedPreferences
           final prefs = await SharedPreferences.getInstance();
-          await prefs.setString('user_id', user.id);
+          await prefs.setString('id', user.id);
           await prefs.setString('username', user.username);
           await prefs.setString('phno', user.phno);
           await prefs.setString('password', user.password);

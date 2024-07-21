@@ -31,7 +31,7 @@ class _TeacherProfilePageState extends ConsumerState<TeacherProfilePage> {
             icon: Icon(Icons.edit),
             onPressed: () {
               if (teacher != null) {
-                //context.router.push(TeacherEditRoute(teacher: teacher));
+                context.router.push(TeacherEditRoute(teacher: teacher));
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Teacher data is not available')),
@@ -154,7 +154,7 @@ class _TeacherProfilePageState extends ConsumerState<TeacherProfilePage> {
               context.router.replaceNamed('/user-detail');
               break;
             case 2:
-              //context.router.push(TeacherProfileRoute(teacher: teacher!));
+              context.router.push(TeacherProfileRoute(teacher: teacher!));
               break;
           }
         },

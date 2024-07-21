@@ -15,7 +15,7 @@ _$TeacherDtoImpl _$$TeacherDtoImplFromJson(Map<String, dynamic> json) =>
       password: stringFromJson(json['password']),
       address: stringFromJson(json['address']),
       createdAt: dateTimeFromJson(json['createdAt']),
-      teacherId: stringFromJson(json['teacherId']),
+      id: stringFromJson(json['id']),
     );
 
 Map<String, dynamic> _$$TeacherDtoImplToJson(_$TeacherDtoImpl instance) =>
@@ -27,5 +27,5 @@ Map<String, dynamic> _$$TeacherDtoImplToJson(_$TeacherDtoImpl instance) =>
       'password': instance.password,
       'address': instance.address,
       'createdAt': instance.createdAt.toIso8601String(),
-      'teacherId': instance.teacherId,
+      'id': instance.id,
     };

@@ -209,7 +209,7 @@ class _TeacherRegisterPageState extends ConsumerState<TeacherRegisterPage> {
                       phno: phnoController.text,
                       password: pswdController.text,
                       createdAt: DateTime.now(),
-                      teacherId: '',
+                      id: '',
                     );
                     print(teacher);
                     ref.read(teacherAddNotifierProvider.notifier).addTeacher(teacher);

@@ -152,6 +152,7 @@ class _UserEditPageState extends ConsumerState<UserEditPage> {
                       id: widget.user.id,
                     );
                     ref.read(userUpdateNotifierProvider.notifier).updateUser(user);
+                    print("updateUser=> $user ");
                   },
                   style: ElevatedButton.styleFrom(
                     shape: const StadiumBorder(),

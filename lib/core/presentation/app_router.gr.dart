@@ -33,6 +33,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SplashPage(),
       );
     },
+    TeacherDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TeacherDetailPage(),
+      );
+    },
     TeacherEditRoute.name: (routeData) {
       final args = routeData.argsAs<TeacherEditRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -65,6 +71,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const TeacherRegisterPage(),
+      );
+    },
+    UserDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const UserDetailPage(),
       );
     },
     UserEditRoute.name: (routeData) {
@@ -148,6 +160,20 @@ class SplashRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SplashRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TeacherDetailPage]
+class TeacherDetailRoute extends PageRouteInfo<void> {
+  const TeacherDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          TeacherDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TeacherDetailRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -242,6 +268,20 @@ class TeacherRegisterRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'TeacherRegisterRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [UserDetailPage]
+class UserDetailRoute extends PageRouteInfo<void> {
+  const UserDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          UserDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserDetailRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

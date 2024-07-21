@@ -18,7 +18,7 @@ class TeacherDto with _$TeacherDto {
     @JsonKey(name: "password", fromJson: stringFromJson) required String password,
     @JsonKey(name: "address", fromJson: stringFromJson) required String address,
     @JsonKey(name: "createdAt", fromJson: dateTimeFromJson) required DateTime createdAt,
-    @JsonKey(name: "teacherId", fromJson: stringFromJson) required String teacherId,
+    @JsonKey(name: "id", fromJson: stringFromJson) required String id,
   }) =_TeacherDto;
 
   factory TeacherDto.fromJson(Map<String, dynamic> json) =>
@@ -33,7 +33,7 @@ class TeacherDto with _$TeacherDto {
         password: password,
         address: address,
         createdAt : createdAt,
-        teacherId : teacherId,
+        id : id,
       );
 
   // normal method
@@ -45,6 +45,6 @@ class TeacherDto with _$TeacherDto {
         password: password,
         address: address,
         createdAt : createdAt,
-        teacherId : teacherId,
+        id : id,
       );  
 }

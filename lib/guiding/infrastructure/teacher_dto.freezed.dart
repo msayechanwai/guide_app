@@ -34,8 +34,8 @@ mixin _$TeacherDto {
   String get address => throw _privateConstructorUsedError;
   @JsonKey(name: "createdAt", fromJson: dateTimeFromJson)
   DateTime get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: "teacherId", fromJson: stringFromJson)
-  String get teacherId => throw _privateConstructorUsedError;
+  @JsonKey(name: "id", fromJson: stringFromJson)
+  String get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,7 +59,7 @@ abstract class $TeacherDtoCopyWith<$Res> {
       @JsonKey(name: "address", fromJson: stringFromJson) String address,
       @JsonKey(name: "createdAt", fromJson: dateTimeFromJson)
       DateTime createdAt,
-      @JsonKey(name: "teacherId", fromJson: stringFromJson) String teacherId});
+      @JsonKey(name: "id", fromJson: stringFromJson) String id});
 }
 
 /// @nodoc
@@ -82,7 +82,7 @@ class _$TeacherDtoCopyWithImpl<$Res, $Val extends TeacherDto>
     Object? password = null,
     Object? address = null,
     Object? createdAt = null,
-    Object? teacherId = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
       teacherName: null == teacherName
@@ -113,9 +113,9 @@ class _$TeacherDtoCopyWithImpl<$Res, $Val extends TeacherDto>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      teacherId: null == teacherId
-          ? _value.teacherId
-          : teacherId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -139,7 +139,7 @@ abstract class _$$TeacherDtoImplCopyWith<$Res>
       @JsonKey(name: "address", fromJson: stringFromJson) String address,
       @JsonKey(name: "createdAt", fromJson: dateTimeFromJson)
       DateTime createdAt,
-      @JsonKey(name: "teacherId", fromJson: stringFromJson) String teacherId});
+      @JsonKey(name: "id", fromJson: stringFromJson) String id});
 }
 
 /// @nodoc
@@ -160,7 +160,7 @@ class __$$TeacherDtoImplCopyWithImpl<$Res>
     Object? password = null,
     Object? address = null,
     Object? createdAt = null,
-    Object? teacherId = null,
+    Object? id = null,
   }) {
     return _then(_$TeacherDtoImpl(
       teacherName: null == teacherName
@@ -191,9 +191,9 @@ class __$$TeacherDtoImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      teacherId: null == teacherId
-          ? _value.teacherId
-          : teacherId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -214,8 +214,7 @@ class _$TeacherDtoImpl extends _TeacherDto {
       @JsonKey(name: "address", fromJson: stringFromJson) required this.address,
       @JsonKey(name: "createdAt", fromJson: dateTimeFromJson)
       required this.createdAt,
-      @JsonKey(name: "teacherId", fromJson: stringFromJson)
-      required this.teacherId})
+      @JsonKey(name: "id", fromJson: stringFromJson) required this.id})
       : super._();
 
   factory _$TeacherDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -243,12 +242,12 @@ class _$TeacherDtoImpl extends _TeacherDto {
   @JsonKey(name: "createdAt", fromJson: dateTimeFromJson)
   final DateTime createdAt;
   @override
-  @JsonKey(name: "teacherId", fromJson: stringFromJson)
-  final String teacherId;
+  @JsonKey(name: "id", fromJson: stringFromJson)
+  final String id;
 
   @override
   String toString() {
-    return 'TeacherDto(teacherName: $teacherName, education: $education, major: $major, phno: $phno, password: $password, address: $address, createdAt: $createdAt, teacherId: $teacherId)';
+    return 'TeacherDto(teacherName: $teacherName, education: $education, major: $major, phno: $phno, password: $password, address: $address, createdAt: $createdAt, id: $id)';
   }
 
   @override
@@ -267,14 +266,13 @@ class _$TeacherDtoImpl extends _TeacherDto {
             (identical(other.address, address) || other.address == address) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.teacherId, teacherId) ||
-                other.teacherId == teacherId));
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, teacherName, education, major,
-      phno, password, address, createdAt, teacherId);
+      phno, password, address, createdAt, id);
 
   @JsonKey(ignore: true)
   @override
@@ -306,8 +304,8 @@ abstract class _TeacherDto extends TeacherDto {
       required final String address,
       @JsonKey(name: "createdAt", fromJson: dateTimeFromJson)
       required final DateTime createdAt,
-      @JsonKey(name: "teacherId", fromJson: stringFromJson)
-      required final String teacherId}) = _$TeacherDtoImpl;
+      @JsonKey(name: "id", fromJson: stringFromJson)
+      required final String id}) = _$TeacherDtoImpl;
   const _TeacherDto._() : super._();
 
   factory _TeacherDto.fromJson(Map<String, dynamic> json) =
@@ -335,8 +333,8 @@ abstract class _TeacherDto extends TeacherDto {
   @JsonKey(name: "createdAt", fromJson: dateTimeFromJson)
   DateTime get createdAt;
   @override
-  @JsonKey(name: "teacherId", fromJson: stringFromJson)
-  String get teacherId;
+  @JsonKey(name: "id", fromJson: stringFromJson)
+  String get id;
   @override
   @JsonKey(ignore: true)
   _$$TeacherDtoImplCopyWith<_$TeacherDtoImpl> get copyWith =>

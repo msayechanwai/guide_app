@@ -14,9 +14,9 @@ class TeacherModel with _$TeacherModel {
     required String password,
     required String address,
     required DateTime createdAt,
-    required String teacherId,
+    required String id,
   }) = _TeacherModel;
-     TeacherDto toDto() => TeacherDto(
+      TeacherDto toDto() => TeacherDto(
         teacherName : teacherName,
         education : education,
         major: major,
@@ -24,6 +24,6 @@ class TeacherModel with _$TeacherModel {
         password : password,
         address : address,
         createdAt : createdAt,
-        teacherId : teacherId,
-    );    
+        id : id,
+    );     
 }

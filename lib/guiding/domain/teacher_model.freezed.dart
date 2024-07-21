@@ -23,7 +23,7 @@ mixin _$TeacherModel {
   String get password => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
-  String get teacherId => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TeacherModelCopyWith<TeacherModel> get copyWith =>
@@ -44,7 +44,7 @@ abstract class $TeacherModelCopyWith<$Res> {
       String password,
       String address,
       DateTime createdAt,
-      String teacherId});
+      String id});
 }
 
 /// @nodoc
@@ -67,7 +67,7 @@ class _$TeacherModelCopyWithImpl<$Res, $Val extends TeacherModel>
     Object? password = null,
     Object? address = null,
     Object? createdAt = null,
-    Object? teacherId = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
       teacherName: null == teacherName
@@ -98,9 +98,9 @@ class _$TeacherModelCopyWithImpl<$Res, $Val extends TeacherModel>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      teacherId: null == teacherId
-          ? _value.teacherId
-          : teacherId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -122,7 +122,7 @@ abstract class _$$TeacherModelImplCopyWith<$Res>
       String password,
       String address,
       DateTime createdAt,
-      String teacherId});
+      String id});
 }
 
 /// @nodoc
@@ -143,7 +143,7 @@ class __$$TeacherModelImplCopyWithImpl<$Res>
     Object? password = null,
     Object? address = null,
     Object? createdAt = null,
-    Object? teacherId = null,
+    Object? id = null,
   }) {
     return _then(_$TeacherModelImpl(
       teacherName: null == teacherName
@@ -174,9 +174,9 @@ class __$$TeacherModelImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      teacherId: null == teacherId
-          ? _value.teacherId
-          : teacherId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -193,7 +193,7 @@ class _$TeacherModelImpl extends _TeacherModel {
       required this.password,
       required this.address,
       required this.createdAt,
-      required this.teacherId})
+      required this.id})
       : super._();
 
   @override
@@ -211,11 +211,11 @@ class _$TeacherModelImpl extends _TeacherModel {
   @override
   final DateTime createdAt;
   @override
-  final String teacherId;
+  final String id;
 
   @override
   String toString() {
-    return 'TeacherModel(teacherName: $teacherName, education: $education, major: $major, phno: $phno, password: $password, address: $address, createdAt: $createdAt, teacherId: $teacherId)';
+    return 'TeacherModel(teacherName: $teacherName, education: $education, major: $major, phno: $phno, password: $password, address: $address, createdAt: $createdAt, id: $id)';
   }
 
   @override
@@ -234,13 +234,12 @@ class _$TeacherModelImpl extends _TeacherModel {
             (identical(other.address, address) || other.address == address) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.teacherId, teacherId) ||
-                other.teacherId == teacherId));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, teacherName, education, major,
-      phno, password, address, createdAt, teacherId);
+      phno, password, address, createdAt, id);
 
   @JsonKey(ignore: true)
   @override
@@ -258,7 +257,7 @@ abstract class _TeacherModel extends TeacherModel {
       required final String password,
       required final String address,
       required final DateTime createdAt,
-      required final String teacherId}) = _$TeacherModelImpl;
+      required final String id}) = _$TeacherModelImpl;
   const _TeacherModel._() : super._();
 
   @override
@@ -276,7 +275,7 @@ abstract class _TeacherModel extends TeacherModel {
   @override
   DateTime get createdAt;
   @override
-  String get teacherId;
+  String get id;
   @override
   @JsonKey(ignore: true)
   _$$TeacherModelImplCopyWith<_$TeacherModelImpl> get copyWith =>

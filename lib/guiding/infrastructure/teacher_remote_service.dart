@@ -99,7 +99,7 @@ class TeacherRemoteService {
   Future<NetworkResult<TeacherDto>> updateTeacher(TeacherDto teacher) async {
     print("update teacher in remote => $teacher");
     try {
-      final response = await _dio.put('teacher/${teacher.teacherId}', data: teacher.toJson());
+      final response = await _dio.put('teacher/${teacher.id}', data: teacher.toJson());
       print("response code => ${response.statusCode}");
       print("response message => ${response.statusMessage}");
       if (response.statusCode == 200) {
@@ -107,6 +107,11 @@ class TeacherRemoteService {
         var teacher = TeacherDto.fromJson(resData);
 
         return NetworkResult.result(teacher);
+      } else if (response.statusCode == 400) {
+        throw ApiException(
+          code: response.statusCode,
+          message: "Bad Request: ${response.data}",
+        );
       } else {
         throw ApiException(
           code: response.statusCode,
