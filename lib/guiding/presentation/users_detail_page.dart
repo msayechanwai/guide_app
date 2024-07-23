@@ -54,10 +54,10 @@ class _UserDetailPageState extends ConsumerState<UserDetailPage> {
       appBar: AppBar(
         title: const Text("User"),
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.lightBlue[50],
+        backgroundColor: Colors.white30,
       ),
       body: Container(
-        color: Colors.lightBlue[50],
+        color: Colors.white30,
         child: listState.when(
           initial: () => const SizedBox(),
           loading: () => const Center(child: CircularProgressIndicator()),
@@ -68,17 +68,22 @@ class _UserDetailPageState extends ConsumerState<UserDetailPage> {
               itemCount: uList.length,
               itemBuilder: (context, index) {
                 final formattedDate = DateFormat('dd-MM-yyyy').format(uList[index].createdat);
-                return Card(
-                  color: Colors.lightBlue[100],
+                return Center(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 20.0), // Margin (left and right)
+            child: Card(
+                  color: Colors.lightBlue[50],
                   child: ListTile(
                     title: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Name: ${uList[index].username}'),
                         Text('Phone: ${uList[index].phno}'),
-                        Text('Email: ${uList[index].address}'),
+                        Text('Address: ${uList[index].address}'),
                         Text('CreatedAt: $formattedDate'),
-                      ],
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 );

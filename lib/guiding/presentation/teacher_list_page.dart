@@ -2,7 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import '../shared/teacher_providers.dart'; 
+import 'package:url_launcher/url_launcher.dart'; // Add this import
+import '../shared/teacher_providers.dart';
 
 @RoutePage()
 class TeacherListPage extends ConsumerStatefulWidget {
@@ -29,6 +30,14 @@ class _TeacherListPageState extends ConsumerState<TeacherListPage> {
     );
   }
 
+  Future<void> _makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    await launchUrl(launchUri);
+  }
+
   @override
   Widget build(BuildContext context) {
     ref.listen(
@@ -49,15 +58,15 @@ class _TeacherListPageState extends ConsumerState<TeacherListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('${widget.major} Teachers'),
-        backgroundColor: Colors.lightBlue[50],
+        backgroundColor: Colors.lightBlue[100],
       ),
       body: Container(
-        color: Colors.lightBlue[50], // Set the background color here
+        color: Colors.lightBlue[100], // Set the background color here
         child: listState.when(
           initial: () => const SizedBox(),
           loading: () => const Center(child: CircularProgressIndicator()),
           empty: () => const Center(child: Text("Empty Data")),
-          noInternet: () => Center(
+          noInternet: () => const Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -77,30 +86,73 @@ class _TeacherListPageState extends ConsumerState<TeacherListPage> {
           success: (teachers) {
             final filteredTeachers = teachers.where((teacher) => teacher.major == widget.major).toList();
             return filteredTeachers.isEmpty
-                ? Center(child: Text('No teachers found for the selected major'))
+                ? const Center(child: Text('No teachers found for the selected major'))
                 : ListView.builder(
                     itemCount: filteredTeachers.length,
                     itemBuilder: (context, index) {
                       final teacher = filteredTeachers[index];
-                      final formattedDate = DateFormat('dd-MM-yyyy').format(teacher.createdAt);
-                      return Card(
-                        color: Colors.lightBlue[100],
+                      return Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Card(
+                        color: Colors.lightBlue[50],
                         child: ListTile(
                           title: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Name: ${teacher.teacherName}'),
-                              Text('Education : ${teacher.education}'),
-                              Text('Major: ${teacher.major}'),
-                              Text('Phone: ${teacher.phno}'),
-                              Text('Email: ${teacher.address}'),
-                              Text('CreatedAt: $formattedDate'),
+                              Row(
+                                children: [
+                                  Icon(Icons.account_box_rounded),
+                                  SizedBox(width: 8),
+                                  Text('${teacher.teacherName}'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.school),
+                                  SizedBox(width: 8),
+                                  Text('${teacher.education}'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.book),
+                                  SizedBox(width: 8),
+                                  Text('${teacher.major}'),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(Icons.phone),
+                                      SizedBox(width: 8),
+                                      Text('${teacher.phno}'),
+                                    ],
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      _makePhoneCall(teacher.phno);
+                                    },
+                                    child: const Text('Call'),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.location_on),
+                                  SizedBox(width: 8),
+                                  Text('${teacher.address}'),
+                                ],
+                              ),
                             ],
                           ),
                         ),
-                      );
-                    },
-                  );
+                      ),
+
+                    );
+                  },
+                );
           },
           error: (err) => Center(child: Text(err.message ?? "Error - Try Again")),
         ),

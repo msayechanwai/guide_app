@@ -19,7 +19,7 @@ class _TeacherHomePageState extends ConsumerState<TeacherHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final currentTeacher = ref.watch(currentTeacherProvider);
+    //final currentTeacher = ref.watch(currentTeacherProvider);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -118,7 +118,7 @@ class _TeacherHomePageState extends ConsumerState<TeacherHomePage> {
                 context.router.replaceNamed('/user-detail');
                 break;
               case 2:
-                context.router.push(TeacherProfileRoute());
+                context.router.push(const TeacherProfileRoute());
                 break;
             }
           },
@@ -140,7 +140,7 @@ class _TeacherHomePageState extends ConsumerState<TeacherHomePage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(imagePath, width: 70, height: 70),
+            Image.asset(imagePath, width: 85.0, height: 85.0),
             Text(title),
             ],
           ),

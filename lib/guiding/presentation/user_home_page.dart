@@ -140,7 +140,7 @@ class _UserHomePageState extends ConsumerState<UserHomePage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(imagePath, width: 70, height: 70),
+            Image.asset(imagePath, width: 85.0, height: 85.0),
             Text(title),
             ],
           ),

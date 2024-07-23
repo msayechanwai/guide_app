@@ -24,6 +24,7 @@ dependencies:
   flutter_flavorizr: ^2.2.1
   riverpod: ^2.5.1
   intl: ^0.19.0
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
