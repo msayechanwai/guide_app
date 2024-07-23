@@ -126,15 +126,24 @@ class _UserHomePageState extends ConsumerState<UserHomePage> {
     );
   }
 
-  Widget _buildCard(String imagePath, String title) {
-    return Card(
+   Widget _buildCard(String imagePath, String title) {
+  return GestureDetector(
+    onTap: () {
+      context.router.push(
+        TeacherListRoute(
+          major: title,
+        ),
+      );
+    },
+    child: Card(
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(imagePath, width: 70, height: 70),
             Text(title),
-          ],
+            ],
+          ),
         ),
       ),
     );
