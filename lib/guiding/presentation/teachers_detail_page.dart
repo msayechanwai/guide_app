@@ -9,7 +9,8 @@ import '../shared/teacher_providers.dart';
 
 @RoutePage()
 class TeacherDetailPage extends ConsumerStatefulWidget {
-  const TeacherDetailPage({super.key});
+  //final List<TeacherModel> teacher;
+  const TeacherDetailPage( {super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _TeacherDetailPageState();
@@ -118,7 +119,7 @@ class _TeacherDetailPageState extends ConsumerState<TeacherDetailPage> {
               context.router.replaceNamed('/teacher-detail');
               break;
             case 2:
-              context.router.push(UserProfileRoute(user: user!));
+              context.router.push(UserProfileRoute());
               break;
           }
         },

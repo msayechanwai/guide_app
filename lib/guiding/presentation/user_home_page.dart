@@ -79,7 +79,7 @@ class _UserHomePageState extends ConsumerState<UserHomePage> {
                     _buildCard('assets/images/korea.jpg', 'KOREA'),
                     _buildCard('assets/images/thailand.jpg', 'THAILAND'),
                     _buildCard('assets/images/js.jpg', 'JavaScript'),
-                    _buildCard('assets/images/java.jpg', 'Java'),
+                    _buildCard('assets/images/java.jpg', 'JAVA'),
                     _buildCard('assets/images/python.jpg', 'Python'),
                   ],
                 ),
@@ -117,7 +117,7 @@ class _UserHomePageState extends ConsumerState<UserHomePage> {
                 context.router.replaceNamed('/teacher-detail');
                 break;
               case 2:
-                context.router.push(UserProfileRoute(user: currentUser!));
+                context.router.push(UserProfileRoute());
                 break;
             }
           },

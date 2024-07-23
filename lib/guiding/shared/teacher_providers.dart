@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../core/shared/teacherdio_provider.dart';
 import '../feat_guiding.dart';
@@ -31,3 +33,13 @@ final teacherUpdateNotifierProvider =
 });
 
 final currentTeacherProvider = StateProvider<TeacherModel?>((ref) => null);//add new
+
+final teacherlistProvider = StateProvider<List<TeacherModel>>((ref) {
+  return ref.watch(teacherListNotifierProvider).maybeWhen(
+        orElse: () {
+          log("Else");
+          return [];
+        } ,
+        success: (data) => data,
+      );
+});

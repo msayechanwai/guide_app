@@ -55,6 +55,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const TeacherHomePage(),
       );
     },
+    TeacherListRoute.name: (routeData) {
+      final args = routeData.argsAs<TeacherListRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: TeacherListPage(
+          key: args.key,
+          major: args.major,
+        ),
+      );
+    },
     TeacherLoginRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -231,6 +241,44 @@ class TeacherHomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [TeacherListPage]
+class TeacherListRoute extends PageRouteInfo<TeacherListRouteArgs> {
+  TeacherListRoute({
+    Key? key,
+    required String major,
+    List<PageRouteInfo>? children,
+  }) : super(
+          TeacherListRoute.name,
+          args: TeacherListRouteArgs(
+            key: key,
+            major: major,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'TeacherListRoute';
+
+  static const PageInfo<TeacherListRouteArgs> page =
+      PageInfo<TeacherListRouteArgs>(name);
+}
+
+class TeacherListRouteArgs {
+  const TeacherListRouteArgs({
+    this.key,
+    required this.major,
+  });
+
+  final Key? key;
+
+  final String major;
+
+  @override
+  String toString() {
+    return 'TeacherListRouteArgs{key: $key, major: $major}';
+  }
+}
+
+/// generated route for
 /// [TeacherLoginPage]
 class TeacherLoginRoute extends PageRouteInfo<void> {
   const TeacherLoginRoute({List<PageRouteInfo>? children})
@@ -247,7 +295,7 @@ class TeacherLoginRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [TeacherProfilePage]
 class TeacherProfileRoute extends PageRouteInfo<void> {
-  const TeacherProfileRoute({List<PageRouteInfo>? children, required TeacherModel teacher})
+  const TeacherProfileRoute({List<PageRouteInfo>? children})
       : super(
           TeacherProfileRoute.name,
           initialChildren: children,
@@ -355,7 +403,7 @@ class UserLoginRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [UserProfilePage]
 class UserProfileRoute extends PageRouteInfo<void> {
-  const UserProfileRoute({List<PageRouteInfo>? children, required UserModel user})
+  const UserProfileRoute({List<PageRouteInfo>? children})
       : super(
           UserProfileRoute.name,
           initialChildren: children,

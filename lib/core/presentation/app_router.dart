@@ -27,6 +27,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: TeacherProfileRoute.page, path: "/teacher-profile"),
         AutoRoute(page: TeacherEditRoute.page, path:"/teacher-edit"),
         AutoRoute(page: TeacherDetailRoute.page, path:"/teacher-detail"),
+        AutoRoute(page: TeacherListRoute.page, path:"/teacher-list"),
       ];
       
 }

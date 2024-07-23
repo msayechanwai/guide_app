@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../all_feat.dart';
+import '../feat_guiding.dart';
 import '../shared/teacher_providers.dart';
 
 @RoutePage()
@@ -108,11 +109,11 @@ class _TeacherProfilePageState extends ConsumerState<TeacherProfilePage> {
                   ),
                   ListTile(
                     leading: Icon(Icons.book),
-                    title: Text('Name : ${teacher.education}'),
+                    title: Text('Education : ${teacher.education}'),
                   ),
                   ListTile(
                     leading: Icon(Icons.star),
-                    title: Text('Name : ${teacher.major}'),
+                    title: Text('Major : ${teacher.major}'),
                   ),
                   ListTile(
                     leading: Icon(Icons.phone),
@@ -154,7 +155,7 @@ class _TeacherProfilePageState extends ConsumerState<TeacherProfilePage> {
               context.router.replaceNamed('/user-detail');
               break;
             case 2:
-              context.router.push(TeacherProfileRoute(teacher: teacher!));
+              context.router.push(TeacherProfileRoute());
               break;
           }
         },

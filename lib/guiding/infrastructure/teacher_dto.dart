@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../core/shared/utils.dart';
-import '../domain/user_model.dart';
 import '../feat_guiding.dart';
 
 part 'teacher_dto.freezed.dart';

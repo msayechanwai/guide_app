@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:guide_app/guiding/domain/user_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../all_feat.dart';
 import '../feat_guiding.dart';
@@ -16,12 +15,12 @@ class TeacherListState with _$TeacherListState {
   const factory TeacherListState.error(ResponseInfoError error) = _Error;
 }
 
-class TeacherListNotifier extends StateNotifier<TeacherListState> {
+ class TeacherListNotifier extends StateNotifier<TeacherListState> {
   final TeacherRepository _repository;
   TeacherListNotifier(this._repository)
       : super(const TeacherListState.initial());
 
-    Future<void> getTeacherList() async {
+  Future<void> getTeacherList() async {
     state = const TeacherListState.loading();
     final failureOrSuccess = await _repository.getTeacherList();
     state = failureOrSuccess.fold(
@@ -33,5 +32,5 @@ class TeacherListNotifier extends StateNotifier<TeacherListState> {
             : TeacherListState.success(tList),
       ),
     );
-  } 
-} 
+  }
+}

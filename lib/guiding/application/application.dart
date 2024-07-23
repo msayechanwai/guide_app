@@ -7,3 +7,4 @@ export 'teacher_list_notifier.dart';
 export 'teacher_add_notifier.dart';
 export 'teacher_delete_notifier.dart';
 export 'teacher_update_notifier.dart';
+export '../presentation/teacher_list_page.dart';

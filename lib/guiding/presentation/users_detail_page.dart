@@ -116,7 +116,7 @@ class _UserDetailPageState extends ConsumerState<UserDetailPage> {
               context.router.replaceNamed('/user-detail');
               break;
             case 2:
-              context.router.push(TeacherProfileRoute(teacher: teacher!));
+              context.router.push(TeacherProfileRoute());
               break;
           }
         },

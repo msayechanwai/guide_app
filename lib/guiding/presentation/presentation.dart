@@ -12,3 +12,4 @@ export 'teacher_home_page.dart';
 export 'teacher_profile_page.dart';
 export 'teacher_update_page.dart';
 export 'teachers_detail_page.dart';
+export 'teacher_list_page.dart';

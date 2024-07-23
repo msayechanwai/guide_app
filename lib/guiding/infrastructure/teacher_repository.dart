@@ -10,6 +10,7 @@ class TeacherRepository {
   Future<Either<ResponseInfoError, DomainResult<List<TeacherModel>>>> getTeacherList() async {
     try {
       final hodStaffs = await _remoteService.getTeacherList();
+      print("hodstaffs=> hodStaffs");
 
       return right(
         hodStaffs.when(
@@ -90,6 +91,24 @@ class TeacherRepository {
           }
           return right(teacher);
         },
+      );
+    } on ApiException catch (e) {
+      return left(ResponseInfoError(e.code, e.message));
+    }
+  }
+
+  //fliter by major
+  Future<Either<ResponseInfoError, DomainResult<List<TeacherModel>>>> getTeachersByMajor(String major) async {
+    try {
+      final result = await _remoteService.getTeacherList();
+
+      return right(
+        result.when(
+          noConnection: () => DomainResult.noInternet(),
+          result: (entity) => DomainResult.data(
+            entity.where((e) => e.major == major).map((e) => e.toDomain()).toList(),
+          ),
+        ),
       );
     } on ApiException catch (e) {
       return left(ResponseInfoError(e.code, e.message));

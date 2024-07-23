@@ -118,7 +118,7 @@ class _TeacherHomePageState extends ConsumerState<TeacherHomePage> {
                 context.router.replaceNamed('/user-detail');
                 break;
               case 2:
-                context.router.push(TeacherProfileRoute(teacher: currentTeacher!));
+                context.router.push(TeacherProfileRoute());
                 break;
             }
           },
@@ -126,16 +126,24 @@ class _TeacherHomePageState extends ConsumerState<TeacherHomePage> {
       ),
     );
   }
-
   Widget _buildCard(String imagePath, String title) {
-    return Card(
+  return GestureDetector(
+    onTap: () {
+      context.router.push(
+        TeacherListRoute(
+          major: title,
+        ),
+      );
+    },
+    child: Card(
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(imagePath, width: 70, height: 70),
             Text(title),
-          ],
+            ],
+          ),
         ),
       ),
     );
