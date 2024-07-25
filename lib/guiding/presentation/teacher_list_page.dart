@@ -120,70 +120,118 @@ class _TeacherListPageState extends ConsumerState<TeacherListPage> {
                           itemCount: filteredTeachers.length,
                           itemBuilder: (context, index) {
                             final teacher = filteredTeachers[index];
-                            return Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Card(
-                                color: Colors.white60,
-                                child: ListTile(
-                                  title: Column(
+                           return Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                    child: Card(
+                      color: Colors.white70,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Top Section
+                            Row(
+                              children: [
+                                const CircleAvatar(
+                                  radius: 30.0,
+                                  backgroundImage: AssetImage('assets/images/welcome.jpg'),
+                                ),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         children: [
-                                          const Icon(Icons.account_box_rounded, color: Colors.blueAccent,),
                                           const SizedBox(width: 8),
-                                          Text('${teacher.teacherName}',
-                                            style: TextStyle(color: Colors.blueAccent,
-                                                    fontWeight: FontWeight.bold,
+                                          Text(
+                                            teacher.teacherName,
+                                            style: const TextStyle(
+                                              color: Colors.blueGrey,
+                                              fontWeight: FontWeight.bold,
                                             ),
                                           ),
                                         ],
                                       ),
                                       Row(
                                         children: [
-                                          const Icon(Icons.school, color: Colors.blueAccent,),
                                           const SizedBox(width: 8),
-                                          Text('${teacher.education}',
-                                            style: TextStyle(color: Colors.blueAccent,
-                                                    fontWeight: FontWeight.bold,
+                                          Text(
+                                            teacher.major,
+                                            style: const TextStyle(
+                                              color: Colors.blueGrey,
+                                              fontWeight: FontWeight.bold,
                                             ),
                                           ),
                                         ],
                                       ),
-                                      Row(
-                                        children: [
-                                          const Icon(Icons.book,color: Colors.blueAccent,),
-                                          const SizedBox(width: 8),
-                                          Text('${teacher.major}',
-                                            style: TextStyle(color: Colors.blueAccent,
-                                                    fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Divider(), // Dividing line
+                            // Bottom Section
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text(
+                                        'Education',
+                                        style: TextStyle(
+                                          color: Colors.blueGrey,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                      Row(
+                                    ),
+                                    Expanded(
+                                      flex: 3,
+                                      child: Text(
+                                        teacher.education,
+                                        style: const TextStyle(
+                                          color: Colors.blueGrey,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 4), // Reduced height for spacing
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text(
+                                        'Phone',
+                                        style: TextStyle(
+                                          color: Colors.blueGrey,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 3,
+                                      child: Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Row(
-                                            children: [
-                                              const Icon(Icons.phone, color: Colors.blueAccent,),
-                                              const SizedBox(width: 8),
-                                              Text('${teacher.phno}',
-                                                style: TextStyle(color: Colors.blueAccent,
-                                                    fontWeight: FontWeight.bold,
+                                          Text(
+                                            teacher.phno,
+                                            style: const TextStyle(
+                                              color: Colors.blueGrey,
+                                              fontWeight: FontWeight.bold,
                                             ),
-                                              ),
-                                            ],
                                           ),
-                                         SizedBox(
-                                            width: 70,
-                                            height: 40,
+                                          SizedBox(
+                                            width: 60,
+                                            height: 35,
                                             child: TextButton(
                                               onPressed: () {
                                                 _makePhoneCall(teacher.phno);
                                               },
                                               style: TextButton.styleFrom(
-                                                backgroundColor: Colors.blueAccent, 
+                                                backgroundColor: Colors.blueGrey,
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius: BorderRadius.circular(8.0), // round corners
                                                 ),
@@ -197,26 +245,44 @@ class _TeacherListPageState extends ConsumerState<TeacherListPage> {
                                               ),
                                             ),
                                           ),
-
-
                                         ],
                                       ),
-                                      Row(
-                                        children: [
-                                          const Icon(Icons.location_on,color: Colors.blueAccent,),
-                                          const SizedBox(width: 8),
-                                          Text('${teacher.address}',
-                                            style: TextStyle(color: Colors.blueAccent,
-                                                    fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            );
+                                const SizedBox(height: 4), // Reduced height for spacing
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text(
+                                        'Address',
+                                        style: TextStyle(
+                                          color: Colors.blueGrey,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 3,
+                                      child: Text(
+                                        teacher.address,
+                                        style: const TextStyle(
+                                          color: Colors.blueGrey,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                );
                           },
                         );
                 },

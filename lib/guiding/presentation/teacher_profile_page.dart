@@ -128,6 +128,7 @@ class _TeacherProfilePageState extends ConsumerState<TeacherProfilePage> {
               ),
             ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.blue,
         currentIndex: selectedIndex,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

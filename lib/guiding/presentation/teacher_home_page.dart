@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../all_feat.dart';
-import '../shared/teacher_providers.dart';
 
 @RoutePage()
 class TeacherHomePage extends ConsumerStatefulWidget {
@@ -91,7 +90,7 @@ class _TeacherHomePageState extends ConsumerState<TeacherHomePage> {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,
           selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.grey,
+          unselectedItemColor: const Color.fromRGBO(158, 158, 158, 1),
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),

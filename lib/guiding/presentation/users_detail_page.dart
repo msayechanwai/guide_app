@@ -98,9 +98,8 @@ class _UserDetailPageState extends ConsumerState<UserDetailPage> {
           ),
         ),
       ),
-
       body: Container(
-        color: Colors.white30,
+        color: Colors.blue[50],
         child: listState.when(
           initial: () => const SizedBox(),
           loading: () => const Center(child: CircularProgressIndicator()),
@@ -114,85 +113,149 @@ class _UserDetailPageState extends ConsumerState<UserDetailPage> {
             return ListView.builder(
               itemCount: filteredList.length,
               itemBuilder: (context, index) {
-                final formattedDate = DateFormat('dd-MM-yyyy').format(filteredList[index].createdat);
+                final user = filteredList[index];
+                final formattedDate = DateFormat('dd-MM-yyyy').format(user.createdat);
                 return Center(
                   child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 20.0), // Margin (left and right)
-                  
+                    margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                     child: Card(
-                      color: Colors.lightBlue[50],
-                      child: ListTile(
-                        title: Column(
+                      color: Colors.white70,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            // Top Section
                             Row(
                               children: [
-                                const Icon(Icons.account_box_rounded, color: Colors.blueGrey,),
+                                const CircleAvatar(
+                                  radius: 30.0,
+                                  backgroundImage: AssetImage('assets/images/welcome.jpg'),
+                                ),
                                 const SizedBox(width: 8),
-                                Text(filteredList[index].username,
-                                  style: const TextStyle(color: Colors.blueGrey,
-                                    fontWeight: FontWeight.bold,
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          const SizedBox(width: 8),
+                                          Text(
+                                            user.username,
+                                            style: const TextStyle(
+                                              color: Colors.blueGrey,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            const Divider(), // Dividing line
+                            // Bottom Section
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
                                   children: [
-                                    const Icon(Icons.phone, color: Colors.blueGrey,),
-                                    const SizedBox(width: 8),
-                                    Text(filteredList[index].phno,
-                                      style:const TextStyle(color: Colors.blueGrey,
-                                        fontWeight: FontWeight.bold,
+                                    const Expanded(
+                                      child: Text(
+                                        'Phone',
+                                        style: TextStyle(
+                                          color: Colors.blueGrey,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 3,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                           user.phno,
+                                            style: const TextStyle(
+                                              color: Colors.blueGrey,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 60,
+                                            height: 35,
+                                            child: TextButton(
+                                              onPressed: () {
+                                                _makePhoneCall(user.phno);
+                                              },
+                                              style: TextButton.styleFrom(
+                                                backgroundColor: Colors.blueGrey,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(8.0), // round corners
+                                                ),
+                                              ),
+                                              child: const Text(
+                                                'Call',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
                                 ),
-                                SizedBox(
-                                  width: 60,
-                                  height: 35,
-                                  child: TextButton(
-                                    onPressed: () {
-                                      _makePhoneCall(filteredList[index].phno);
-                                    },
-                                    style: TextButton.styleFrom(
-                                      backgroundColor: Colors.blueGrey,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8.0), // round corners
+                                const SizedBox(height: 4), // Reduced height for spacing
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text(
+                                        'Address',
+                                        style: TextStyle(
+                                          color: Colors.blueGrey,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
-                                    child: const Text(
-                                      'Call',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
+                                    Expanded(
+                                      flex: 3,
+                                      child: Text(
+                                        user.address,
+                                        style: const TextStyle(
+                                          color: Colors.blueGrey,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                const Icon(Icons.location_on, color: Colors.blueGrey,),
-                                const SizedBox(width: 8),
-                                Text(filteredList[index].address,
-                                  style: const TextStyle(color: Colors.blueGrey,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                const Icon(Icons.calendar_month, color: Colors.blueGrey,),
-                                const SizedBox(width: 8),
-                                Text(formattedDate,
-                                  style: const TextStyle(color: Colors.blueGrey,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                const SizedBox(height: 4), // Reduced height for spacing
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text(
+                                        'Created At',
+                                        style: TextStyle(
+                                          color: Colors.blueGrey,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 3,
+                                      child: Text(
+                                        formattedDate,
+                                        style: const TextStyle(
+                                          color: Colors.blueGrey,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -209,6 +272,7 @@ class _UserDetailPageState extends ConsumerState<UserDetailPage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.blue,
         currentIndex: selectedIndex,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

@@ -120,6 +120,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
               ),
             ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.blue,
         currentIndex: selectedIndex,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
