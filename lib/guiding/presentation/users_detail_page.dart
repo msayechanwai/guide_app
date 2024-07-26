@@ -64,7 +64,7 @@ class _UserDetailPageState extends ConsumerState<UserDetailPage> {
       appBar: AppBar(
         title: const Text("All User List"),
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white30,
+        backgroundColor: Colors.white,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(56.0),
           child: Padding(
@@ -99,7 +99,7 @@ class _UserDetailPageState extends ConsumerState<UserDetailPage> {
         ),
       ),
       body: Container(
-        color: Colors.blue[50],
+        color: Colors.white,
         child: listState.when(
           initial: () => const SizedBox(),
           loading: () => const Center(child: CircularProgressIndicator()),

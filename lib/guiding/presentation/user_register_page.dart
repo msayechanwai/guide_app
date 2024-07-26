@@ -69,7 +69,7 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.lightBlue[50],
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -195,7 +195,7 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                   style: ElevatedButton.styleFrom(
                     shape: const StadiumBorder(),
                     padding: const EdgeInsets.symmetric(vertical: 16),
-                    backgroundColor: Colors.lightBlue[200],
+                    backgroundColor: Colors.lightBlue[100],
                   ),
                 ),
                 if (isSuccess) ...[

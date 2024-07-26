@@ -22,10 +22,10 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
     final user = ref.watch(currentUserProvider);
 
     return Scaffold(
-      backgroundColor: Colors.lightBlue[50],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.lightBlue[50],
+        backgroundColor: Colors.white,
         title: const Text("Personal Information"),
         actions: [
           IconButton(
@@ -91,7 +91,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                     children: [
                       Container(
                         height: 150.0,
-                        color: Colors.lightBlue[100],
+                        color: Colors.grey[300],
                       ),
                       Positioned(
                         bottom: -50,

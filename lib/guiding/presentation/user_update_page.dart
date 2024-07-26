@@ -49,7 +49,7 @@ class _UserEditPageState extends ConsumerState<UserEditPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.lightBlue[50],
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -157,7 +157,7 @@ class _UserEditPageState extends ConsumerState<UserEditPage> {
                   style: ElevatedButton.styleFrom(
                     shape: const StadiumBorder(),
                     padding: const EdgeInsets.symmetric(vertical: 16),
-                    backgroundColor: Colors.lightBlue[200],
+                    backgroundColor: Colors.lightBlue[100],
                   ),
                   child: const Text("Update"),
                 ),

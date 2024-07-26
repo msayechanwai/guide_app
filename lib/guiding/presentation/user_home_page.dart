@@ -18,18 +18,18 @@ class _UserHomePageState extends ConsumerState<UserHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final currentUser = ref.watch(currentUserProvider);
+    //final currentUser = ref.watch(currentUserProvider);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.lightBlue[50],
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text(
             'Guiding App',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          backgroundColor: Colors.lightBlue[50],
+          backgroundColor: Colors.white,
         ),
         body: Column(
           children: [
@@ -141,7 +141,9 @@ class _UserHomePageState extends ConsumerState<UserHomePage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(imagePath, width: 85.0, height: 85.0),
-            Text(title),
+            Text(title,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             ],
           ),
         ),

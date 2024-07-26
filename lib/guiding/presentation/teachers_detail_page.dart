@@ -63,7 +63,7 @@ class _TeacherDetailPageState extends ConsumerState<TeacherDetailPage> {
       appBar: AppBar(
         title: const Text("All Teachers List"),
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue[50],
+        backgroundColor: Colors.white,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(56.0),
           child: Padding(
@@ -98,7 +98,7 @@ class _TeacherDetailPageState extends ConsumerState<TeacherDetailPage> {
         ),
       ),
       body: Container(
-        color: Colors.blue[50],
+        color: Colors.white,
         child: listState.when(
           initial: () => const SizedBox(),
           loading: () => const Center(child: CircularProgressIndicator()),

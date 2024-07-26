@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../all_feat.dart';
-import '../feat_guiding.dart';
 import '../shared/teacher_providers.dart';
 
 @RoutePage()
@@ -22,10 +21,10 @@ class _TeacherProfilePageState extends ConsumerState<TeacherProfilePage> {
     final teacher = ref.watch(currentTeacherProvider);
 
     return Scaffold(
-      backgroundColor: Colors.lightBlue[50],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.lightBlue[50],
+        backgroundColor: Colors.white,
         title: const Text("Personal Information"),
         actions: [
           IconButton(
@@ -91,7 +90,7 @@ class _TeacherProfilePageState extends ConsumerState<TeacherProfilePage> {
                     children: [
                       Container(
                         height: 150.0,
-                        color: Colors.lightBlue[100],
+                        color: Colors.grey[300],
                       ),
                       Positioned(
                         bottom: -50,

@@ -97,7 +97,7 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.lightBlue[50],
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -179,7 +179,7 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
                   style: ElevatedButton.styleFrom(
                     shape: const StadiumBorder(),
                     padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-                    backgroundColor: Colors.lightBlue[200],
+                    backgroundColor: Colors.lightBlue[100],
                   ),
                 ),
                 Row(

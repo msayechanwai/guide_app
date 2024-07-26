@@ -63,7 +63,7 @@ class _TeacherEditPageState extends ConsumerState<TeacherEditPage> {
     );
 
     return Scaffold(
-      backgroundColor: Colors.lightBlue[50],
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -201,7 +201,7 @@ class _TeacherEditPageState extends ConsumerState<TeacherEditPage> {
                 style: ElevatedButton.styleFrom(
                   shape: const StadiumBorder(),
                   padding: const EdgeInsets.symmetric(vertical: 16),
-                  backgroundColor: Colors.lightBlue[200],
+                  backgroundColor: Colors.lightBlue[100],
                 ),
                 child: const Text("Update"),
               ),
