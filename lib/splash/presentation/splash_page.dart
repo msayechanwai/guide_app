@@ -40,8 +40,8 @@ class _SplashPageState extends ConsumerState<SplashPage> {
     final teacherPassword = prefs.getString('password');
     final teacherAddress = prefs.getString('address');
     final teacherCreatedAt = prefs.getString('createdAt');
-
-    if (userId != null && username != null && phno != null && password != null && address != null && createdAt != null) {
+    //final profileImage =prefs.getString('profileImage');//test for profile
+    if (userId != null && username != null && phno != null && password != null && address != null && createdAt != null ) {
       ref.read(currentUserProvider.notifier).state = UserModel(
         id: userId,
         username: username,
@@ -61,6 +61,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
         password: teacherPassword,
         address: teacherAddress,
         createdAt: DateTime.parse(teacherCreatedAt),
+       // profileImage: profileImage,//test
       );
       context.router.replace(const TeacherHomeRoute());
     } else {

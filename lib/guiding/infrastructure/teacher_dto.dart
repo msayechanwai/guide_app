@@ -24,7 +24,7 @@ class TeacherDto with _$TeacherDto {
       _$TeacherDtoFromJson(json);
 
   // get method
-  TeacherModel get domain => TeacherModel(
+   TeacherModel get domain => TeacherModel(
         teacherName : teacherName,
         education : education,
         major: major,
@@ -45,5 +45,5 @@ class TeacherDto with _$TeacherDto {
         address: address,
         createdAt : createdAt,
         id : id,
-      );  
+      );   
 }

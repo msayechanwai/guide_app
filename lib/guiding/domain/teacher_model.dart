@@ -15,8 +15,9 @@ class TeacherModel with _$TeacherModel {
     required String address,
     required DateTime createdAt,
     required String id,
+    //required String profileImage,
   }) = _TeacherModel;
-      TeacherDto toDto() => TeacherDto(
+       TeacherDto toDto() => TeacherDto(
         teacherName : teacherName,
         education : education,
         major: major,
@@ -25,5 +26,6 @@ class TeacherModel with _$TeacherModel {
         address : address,
         createdAt : createdAt,
         id : id,
-    );     
+       // profileImage : profileImage,
+    );      
 }
